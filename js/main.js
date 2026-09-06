@@ -71,7 +71,7 @@ function initClinicStatus() {
 }
 
 /* ==========================================================================
-   2. MOBILE NAVIGATION DRAWER
+   2. MOBILE NAVIGATION DRAWER (iOS-compatible scroll lock)
    ========================================================================== */
 function initMobileNav() {
   const openBtn = document.getElementById('mobileMenuToggle');
@@ -81,25 +81,52 @@ function initMobileNav() {
 
   if (!drawer) return;
 
+  let scrollY = 0;
+
   function openDrawer() {
+    // iOS Safari fix: position:fixed prevents background scroll rubber-banding
+    scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     drawer.classList.add('open');
-    document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
     drawer.classList.remove('open');
-    document.body.style.overflow = '';
+    // Restore scroll position after removing fixed positioning
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollY);
   }
 
   if (openBtn) openBtn.addEventListener('click', openDrawer);
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
 
+  // Close when tapping the overlay (outside drawer)
   drawer.addEventListener('click', (e) => {
     if (e.target === drawer) closeDrawer();
   });
 
+  // Close when a nav link is tapped, then scroll to section accounting for sticky header
   drawerLinks.forEach(link => {
-    link.addEventListener('click', closeDrawer);
+    link.addEventListener('click', (e) => {
+      closeDrawer();
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        // Small delay to let drawer close animation complete before scrolling
+        setTimeout(() => {
+          const target = document.querySelector(href);
+          if (target) {
+            const headerHeight = document.querySelector('.main-header')?.offsetHeight || 64;
+            const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          }
+        }, 300);
+      }
+    });
   });
 }
 

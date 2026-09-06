@@ -2329,3 +2329,390 @@ img, svg {
     gap: 30px;
   }
 }
+
+/* ==========================================================================
+   MOBILE OPTIMIZATION — iOS (Safari) & Android (Chrome)
+   Comprehensive improvements for all phone sizes
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   GLOBAL MOBILE BASE FIXES
+   -------------------------------------------------------------------------- */
+
+/* Remove tap flash highlight on all interactive elements (iOS Safari) */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove 300ms tap delay on all touch devices (iOS Safari) */
+a, button, [role="button"],
+.btn, .symptom-card, .faq-question,
+.mobile-bar-btn, .drawer-link, .session-radio-card {
+  touch-action: manipulation;
+}
+
+/* Ensure all interactive touch targets meet Apple/Google 44x44px minimum */
+.btn,
+.mobile-bar-btn,
+.drawer-link,
+.faq-question,
+.symptom-card,
+.nav-link,
+.drawer-close,
+.mobile-menu-toggle,
+.top-contact-link {
+  min-height: 44px;
+}
+
+/* Form inputs: minimum 16px font-size prevents iOS Safari from auto-zooming */
+input,
+select,
+textarea {
+  font-size: 16px !important;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove inner box shadow on inputs on iOS */
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+input[type="email"],
+select,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* --------------------------------------------------------------------------
+   TOP BAR — SMALL PHONES (< 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .top-bar {
+    padding: 6px 0;
+  }
+
+  .top-bar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  /* Hide the timings text on very small phones — just show status & WhatsApp */
+  .clinic-timings-quick {
+    display: none;
+  }
+
+  .top-bar-left {
+    justify-content: center;
+  }
+
+  .top-bar-right {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .top-contact-link span {
+    font-size: 0.78rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   HEADER / NAV — MOBILE (= 768px)
+   Hide desktop-only CTA buttons; only show hamburger
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .nav-desktop-only {
+    display: none !important;
+  }
+
+  .nav-container {
+    height: 64px;
+  }
+
+  .brand-logo-img {
+    height: 42px;
+  }
+
+  .brand-name-main {
+    font-size: 1rem;
+  }
+
+  .brand-name-sub {
+    font-size: 0.65rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION — TABLET (= 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 0 60px 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-lead {
+    font-size: 0.97rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION — SMALL PHONES (= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 30px 0 50px 0;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    letter-spacing: -0.3px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-badge-container {
+    gap: 6px;
+  }
+
+  .doctor-reg-pill {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+  }
+
+  /* Signboard pills: horizontal scroll instead of wrapping to multiple rows */
+  .signboard-pills-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .signboard-pills-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .signboard-chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Trust metrics: smaller spacing */
+  .trust-metric-item {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .trust-metric-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION — VERY SMALL PHONES (= 360px, e.g. iPhone SE, Galaxy A)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+  }
+
+  .btn-lg {
+    padding: 13px 20px;
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SYMPTOM CHECKER GRID — SMALL PHONES (= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .symptom-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .symptom-card {
+    padding: 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SERVICES / TREATMENT CARDS — SMALL PHONES (= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .care-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .service-card-body {
+    padding: 18px 16px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   BEFORE / AFTER SLIDER — TOUCH HANDLE ENLARGEMENT
+   Make handle easier to grab with a finger on all phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .ba-handle-circle {
+    width: 44px;
+    height: 44px;
+    border-width: 3px;
+  }
+
+  .ba-divider-line {
+    width: 3px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   APPOINTMENT FORM — SMALL PHONES (= 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .appointment-form-card {
+    padding: 20px 16px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 14px;
+    font-size: 16px !important; /* Crucial — prevents iOS Safari zoom-in */
+  }
+
+  .session-select-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .session-radio-card {
+    width: 100%;
+    padding: 14px 16px;
+  }
+
+  .slot-pills-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .slot-pill {
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TESTIMONIALS — SMALL PHONES
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .testimonials-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .testimonial-card {
+    padding: 20px 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER — VERY SMALL PHONES (= 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE FLOATING BOTTOM BAR — SAFE AREA INSET
+   Ensures it doesn't hide behind iPhone home indicator bar
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .mobile-floating-bar {
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  body {
+    padding-bottom: calc(65px + env(safe-area-inset-bottom));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   GENERAL SECTIONS — PADDING REDUCTION ON SMALL PHONES
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   GOOGLE MAP EMBED — MOBILE FULL WIDTH
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .map-viewport {
+    height: 240px;
+  }
+
+  .map-viewport iframe {
+    height: 240px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   iOS RUBBER BAND FIX — prevent body horizontal scroll artifacts
+   -------------------------------------------------------------------------- */
+html, body {
+  overscroll-behavior-x: none;
+}

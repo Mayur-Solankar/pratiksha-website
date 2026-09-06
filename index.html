@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
   <title>Oracare Dental Clinic | Dr. Pratiksha Barge (MUHS) | Dental Surgeon</title>
   <meta name="description" content="Oracare Dental Clinic (ओराकेअर दातांचा दवाखाना) by Dr. Pratiksha Barge, Dental Surgeon (MUHS), Reg No. A-51828. Root Canal, Implants, Aligners & Braces, Smile Design, Crown & Bridges. Call 9545058909.">
   <meta name="theme-color" content="#0D9488">
@@ -80,11 +83,11 @@
 
         <!-- Navigation Action Buttons -->
         <div class="nav-actions">
-          <a href="tel:9545058909" class="btn btn-secondary btn-sm" title="Call Clinic">
+          <a href="tel:9545058909" class="btn btn-secondary btn-sm nav-desktop-only" title="Call Clinic">
             <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
             <span>Call</span>
           </a>
-          <a href="#appointment" class="btn btn-primary btn-sm">
+          <a href="#appointment" class="btn btn-primary btn-sm nav-desktop-only">
             <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
             <span>Book Appointment</span>
           </a>
@@ -753,12 +756,14 @@
             <div class="form-group-row">
               <div class="form-group">
                 <label for="appointmentName">Patient Full Name *</label>
-                <input type="text" id="appointmentName" placeholder="e.g. Rahul Patil" required>
+                <input type="text" id="appointmentName" placeholder="e.g. Rahul Patil" required
+                       autocomplete="name" autocapitalize="words" spellcheck="false">
               </div>
 
               <div class="form-group">
                 <label for="appointmentPhone">Phone Number *</label>
-                <input type="tel" id="appointmentPhone" placeholder="e.g. 98XXXXXXXX" required>
+                <input type="tel" id="appointmentPhone" placeholder="e.g. 98XXXXXXXX" required
+                       autocomplete="tel" inputmode="tel">
               </div>
             </div>
 
