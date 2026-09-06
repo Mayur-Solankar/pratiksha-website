@@ -1,4 +1,4 @@
-/* ==========================================================================
+ï»¿/* ==========================================================================
    ORACARE DENTAL CLINIC - MAIN STYLESHEET
    Doctor: Dr. Pratiksha Barge | Dental Surgeon (MUHS) | Reg No. A-51828
    Color Palette: Teal/Sea Green, Medical Navy Blue, Clean White, Mint
@@ -2250,9 +2250,17 @@ img, svg {
     gap: 40px;
   }
 
-  .hero-visual-box {
+  /* Fix: class name mismatch was hero-visual-box, HTML uses hero-visual-card */
+  .hero-visual-card {
     max-width: 520px;
     margin: 0 auto;
+    width: 100%;
+    padding-bottom: 50px;
+  }
+
+  /* Remove overflow:hidden so floating timings card (bottom:-25px) is visible */
+  .hero-section {
+    overflow: visible;
   }
 
   .about-grid {
@@ -2331,7 +2339,7 @@ img, svg {
 }
 
 /* ==========================================================================
-   MOBILE OPTIMIZATION — iOS (Safari) & Android (Chrome)
+   MOBILE OPTIMIZATION ï¿½ iOS (Safari) & Android (Chrome)
    Comprehensive improvements for all phone sizes
    ========================================================================== */
 
@@ -2384,7 +2392,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   TOP BAR — SMALL PHONES (< 480px)
+   TOP BAR ï¿½ SMALL PHONES (< 480px)
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .top-bar {
@@ -2397,7 +2405,7 @@ textarea {
     gap: 4px;
   }
 
-  /* Hide the timings text on very small phones — just show status & WhatsApp */
+  /* Hide the timings text on very small phones ï¿½ just show status & WhatsApp */
   .clinic-timings-quick {
     display: none;
   }
@@ -2417,7 +2425,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   HEADER / NAV — MOBILE (= 768px)
+   HEADER / NAV ï¿½ MOBILE (= 768px)
    Hide desktop-only CTA buttons; only show hamburger
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
@@ -2443,7 +2451,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   HERO SECTION — TABLET (= 768px)
+   HERO SECTION ï¿½ TABLET (= 768px)
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .hero-section {
@@ -2471,7 +2479,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   HERO SECTION — SMALL PHONES (= 480px)
+   HERO SECTION ï¿½ SMALL PHONES (= 480px)
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .hero-section {
@@ -2530,7 +2538,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   HERO SECTION — VERY SMALL PHONES (= 360px, e.g. iPhone SE, Galaxy A)
+   HERO SECTION ï¿½ VERY SMALL PHONES (= 360px, e.g. iPhone SE, Galaxy A)
    -------------------------------------------------------------------------- */
 @media (max-width: 360px) {
   .hero-title {
@@ -2552,7 +2560,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   SYMPTOM CHECKER GRID — SMALL PHONES (= 480px)
+   SYMPTOM CHECKER GRID ï¿½ SMALL PHONES (= 480px)
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .symptom-grid {
@@ -2566,7 +2574,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   SERVICES / TREATMENT CARDS — SMALL PHONES (= 480px)
+   SERVICES / TREATMENT CARDS ï¿½ SMALL PHONES (= 480px)
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .care-pillars-grid {
@@ -2585,7 +2593,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   BEFORE / AFTER SLIDER — TOUCH HANDLE ENLARGEMENT
+   BEFORE / AFTER SLIDER ï¿½ TOUCH HANDLE ENLARGEMENT
    Make handle easier to grab with a finger on all phones
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
@@ -2601,7 +2609,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   APPOINTMENT FORM — SMALL PHONES (= 480px)
+   APPOINTMENT FORM ï¿½ SMALL PHONES (= 480px)
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .appointment-form-card {
@@ -2612,7 +2620,7 @@ textarea {
   .form-group select,
   .form-group textarea {
     padding: 12px 14px;
-    font-size: 16px !important; /* Crucial — prevents iOS Safari zoom-in */
+    font-size: 16px !important; /* Crucial ï¿½ prevents iOS Safari zoom-in */
   }
 
   .session-select-row {
@@ -2636,7 +2644,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   TESTIMONIALS — SMALL PHONES
+   TESTIMONIALS ï¿½ SMALL PHONES
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .testimonials-slider {
@@ -2651,7 +2659,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   FOOTER — VERY SMALL PHONES (= 360px)
+   FOOTER ï¿½ VERY SMALL PHONES (= 360px)
    -------------------------------------------------------------------------- */
 @media (max-width: 360px) {
   .footer-grid {
@@ -2667,7 +2675,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   MOBILE FLOATING BOTTOM BAR — SAFE AREA INSET
+   MOBILE FLOATING BOTTOM BAR ï¿½ SAFE AREA INSET
    Ensures it doesn't hide behind iPhone home indicator bar
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
@@ -2683,7 +2691,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   GENERAL SECTIONS — PADDING REDUCTION ON SMALL PHONES
+   GENERAL SECTIONS ï¿½ PADDING REDUCTION ON SMALL PHONES
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   section {
@@ -2698,7 +2706,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   GOOGLE MAP EMBED — MOBILE FULL WIDTH
+   GOOGLE MAP EMBED ï¿½ MOBILE FULL WIDTH
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .map-viewport {
@@ -2711,8 +2719,143 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   iOS RUBBER BAND FIX — prevent body horizontal scroll artifacts
+   iOS RUBBER BAND FIX ï¿½ prevent body horizontal scroll artifacts
    -------------------------------------------------------------------------- */
 html, body {
   overscroll-behavior-x: none;
+}
+
+/* ==========================================================================
+   TARGETED FIXES: 3 SECTIONS THAT SHOWED HALF ON PHONE
+   1) Hero "Welcome" section  2) Doctor photo + timings  3) Appointment form
+   ========================================================================== */
+
+/* --- FIX 1: Hero section â€“ ensure full single-column layout on all phones --- */
+@media (max-width: 1024px) {
+  /* Hero text content: full width, no overflow */
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-badge-container {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-cta-group {
+    align-items: center;
+  }
+
+  .hero-trust-metrics {
+    justify-content: center;
+  }
+
+  .signboard-pills-bar {
+    text-align: left;
+  }
+}
+
+/* --- FIX 2: Doctor photo card + floating timings card --- */
+@media (max-width: 1024px) {
+  /* The photo card must be capped so it doesn't try to be desktop-wide */
+  .hero-main-card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* Floating timings card: switch from absolute to relative flow on mobile
+     so it's never clipped or half-shown */
+  .hero-floating-timings {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 16px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Extra size reduction for small phones */
+@media (max-width: 480px) {
+  .hero-main-card {
+    max-width: 100%;
+  }
+
+  .hero-floating-timings {
+    max-width: 100%;
+    padding: 14px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .floating-timings-text p {
+    font-size: 0.76rem;
+  }
+}
+
+/* --- FIX 3: Appointment form section â€“ full width, no overflow --- */
+@media (max-width: 1024px) {
+  .appointment-section {
+    padding: 60px 0;
+    overflow: hidden;
+  }
+
+  /* Left info panel: full width, text centered */
+  .booking-perks {
+    text-align: center;
+    width: 100%;
+  }
+
+  .booking-perks h2 {
+    font-size: 2rem;
+  }
+
+  /* Form card: full width, readable on phone */
+  .appointment-form-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 28px 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .timings-highlight-box {
+    text-align: left;
+  }
+
+  .slot-pills-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-section {
+    padding: 50px 0;
+  }
+
+  .booking-perks h2 {
+    font-size: 1.7rem;
+  }
+
+  .appointment-form-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Prevent any child element from overflowing form card */
+  .appointment-form-card * {
+    max-width: 100%;
+  }
 }
