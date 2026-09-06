@@ -2241,31 +2241,68 @@ img, svg {
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS & COMPREHENSIVE MOBILE OPTIMIZATION
+   Strictly mobile-friendly for iOS (Safari) and Android (Chrome)
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   GLOBAL MOBILE BASE FIXES (All touch devices)
+   -------------------------------------------------------------------------- */
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  overscroll-behavior-x: none;
+}
+
+a, button, [role="button"],
+.btn, .symptom-card, .faq-question,
+.mobile-bar-btn, .drawer-link, .session-radio-card {
+  touch-action: manipulation;
+}
+
+/* Ensure inputs never auto-zoom in iOS Safari */
+input, select, textarea {
+  font-size: 16px !important;
+  border-radius: var(--radius-sm);
+  -webkit-appearance: none;
+  appearance: none;
+  max-width: 100%;
+}
+
+/* Touch targets >= 44px minimum */
+.btn,
+.mobile-bar-btn,
+.drawer-link,
+.faq-question,
+.symptom-card,
+.mobile-menu-toggle {
+  min-height: 44px;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET BREAKPOINT (<= 1024px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
-  /* Fix: class name mismatch was hero-visual-box, HTML uses hero-visual-card */
   .hero-visual-card {
-    max-width: 520px;
+    max-width: 500px;
     margin: 0 auto;
     width: 100%;
-    padding-bottom: 50px;
-  }
-
-  /* Remove overflow:hidden so floating timings card (bottom:-25px) is visible */
-  .hero-section {
-    overflow: visible;
   }
 
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .about-image-wrapper {
@@ -2275,162 +2312,82 @@ img, svg {
 
   .appointment-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .location-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 28px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 }
 
+/* --------------------------------------------------------------------------
+   MOBILE BREAKPOINT (<= 768px) - PRIMARY PHONE LAYOUT
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  .top-bar-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .nav-menu {
-    display: none;
-  }
-
-  .mobile-menu-toggle {
-    display: block;
-  }
-
-  .hero-title {
-    font-size: 2.25rem;
-  }
-
-  .section-title {
-    font-size: 1.85rem;
-  }
-
-  .hero-trust-metrics {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .form-group-row {
-    grid-template-columns: 1fr;
-  }
-
-  .care-pillars-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .mobile-floating-bar {
-    display: block;
-  }
-
   body {
-    padding-bottom: 65px; /* offset for sticky bottom bar */
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .container {
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
   }
-}
 
-/* ==========================================================================
-   MOBILE OPTIMIZATION � iOS (Safari) & Android (Chrome)
-   Comprehensive improvements for all phone sizes
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   GLOBAL MOBILE BASE FIXES
-   -------------------------------------------------------------------------- */
-
-/* Remove tap flash highlight on all interactive elements (iOS Safari) */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Remove 300ms tap delay on all touch devices (iOS Safari) */
-a, button, [role="button"],
-.btn, .symptom-card, .faq-question,
-.mobile-bar-btn, .drawer-link, .session-radio-card {
-  touch-action: manipulation;
-}
-
-/* Ensure all interactive touch targets meet Apple/Google 44x44px minimum */
-.btn,
-.mobile-bar-btn,
-.drawer-link,
-.faq-question,
-.symptom-card,
-.nav-link,
-.drawer-close,
-.mobile-menu-toggle,
-.top-contact-link {
-  min-height: 44px;
-}
-
-/* Form inputs: minimum 16px font-size prevents iOS Safari from auto-zooming */
-input,
-select,
-textarea {
-  font-size: 16px !important;
-  border-radius: var(--radius-sm);
-}
-
-/* Remove inner box shadow on inputs on iOS */
-input[type="text"],
-input[type="tel"],
-input[type="date"],
-input[type="email"],
-select,
-textarea {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-/* --------------------------------------------------------------------------
-   TOP BAR � SMALL PHONES (< 480px)
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
+  /* --- Top Announcement Bar --- */
   .top-bar {
     padding: 6px 0;
+    font-size: 0.78rem;
+    overflow: hidden;
   }
 
   .top-bar-inner {
     flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
-  }
-
-  /* Hide the timings text on very small phones � just show status & WhatsApp */
-  .clinic-timings-quick {
-    display: none;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
   }
 
   .top-bar-left {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .clinic-status-badge {
+    font-size: 0.74rem;
+    padding: 3px 10px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+    max-width: 100%;
+  }
+
+  /* Hide verbose timings text in top bar on mobile; clearly shown in hero & location */
+  .clinic-timings-quick {
+    display: none !important;
   }
 
   .top-bar-right {
     justify-content: center;
-    gap: 12px;
+    gap: 14px;
+    width: 100%;
   }
 
-  .top-contact-link span {
-    font-size: 0.78rem;
+  .top-contact-link {
+    font-size: 0.76rem;
   }
-}
 
-/* --------------------------------------------------------------------------
-   HEADER / NAV � MOBILE (= 768px)
-   Hide desktop-only CTA buttons; only show hamburger
-   -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .nav-desktop-only {
-    display: none !important;
+  /* --- Header & Navigation --- */
+  .main-header {
+    height: 64px;
   }
 
   .nav-container {
@@ -2448,70 +2405,122 @@ textarea {
   .brand-name-sub {
     font-size: 0.65rem;
   }
-}
 
-/* --------------------------------------------------------------------------
-   HERO SECTION � TABLET (= 768px)
-   -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 40px 0 60px 0;
+  .nav-menu {
+    display: none !important;
   }
 
-  .hero-title {
-    font-size: 2rem;
+  .nav-desktop-only {
+    display: none !important;
   }
 
-  .hero-lead {
-    font-size: 0.97rem;
-  }
-
-  .hero-cta-group {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .hero-cta-group .btn {
-    width: 100%;
+  .mobile-menu-toggle {
+    display: flex !important;
+    align-items: center;
     justify-content: center;
   }
-}
 
-/* --------------------------------------------------------------------------
-   HERO SECTION � SMALL PHONES (= 480px)
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .hero-section {
-    padding: 30px 0 50px 0;
-  }
-
-  .hero-title {
-    font-size: 1.85rem;
-    letter-spacing: -0.3px;
+  /* --- Section Spacing & Titles --- */
+  section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
   }
 
   .section-title {
-    font-size: 1.6rem;
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.4px !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem !important;
+    margin-bottom: 30px !important;
+  }
+
+  /* ========================================================================
+     FIX 1: HERO SECTION - PERFECT SINGLE-COLUMN FIT ON PHONE
+     ======================================================================== */
+  .hero-section {
+    padding: 28px 0 44px 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Hide huge decorative floating background circles that blow up mobile width */
+  .hero-bg-shapes {
+    display: none !important;
+  }
+
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 28px !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
   }
 
   .hero-badge-container {
-    gap: 6px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
   }
 
   .doctor-reg-pill {
-    font-size: 0.78rem;
-    padding: 4px 10px;
+    font-size: 0.78rem !important;
+    padding: 6px 12px !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.35 !important;
   }
 
-  /* Signboard pills: horizontal scroll instead of wrapping to multiple rows */
+  .marathi-badge-tag {
+    font-size: 0.82rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .hero-title {
+    font-size: 1.8rem !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.4px !important;
+    margin-bottom: 14px !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .hero-lead {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Horizontal swipeable specialities strip */
+  .signboard-pills-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 12px !important;
+    margin-bottom: 22px !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .signboard-pills-title {
+    font-size: 0.72rem !important;
+    margin-bottom: 8px !important;
+  }
+
   .signboard-pills-list {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    gap: 8px;
-    padding-bottom: 6px;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 6px !important;
+    padding-bottom: 4px !important;
     scrollbar-width: none;
   }
 
@@ -2520,342 +2529,589 @@ textarea {
   }
 
   .signboard-chip {
-    flex-shrink: 0;
-    white-space: nowrap;
+    flex-shrink: 0 !important;
+    font-size: 0.72rem !important;
+    padding: 5px 10px !important;
+    white-space: nowrap !important;
   }
 
-  /* Trust metrics: smaller spacing */
+  /* Full-width action buttons stacked neatly */
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-cta-group .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Hero trust metrics */
+  .hero-trust-metrics {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
   .trust-metric-item {
-    padding: 10px 14px;
-    gap: 10px;
+    width: 100% !important;
+    padding: 10px 12px !important;
+    gap: 10px !important;
   }
 
   .trust-metric-icon {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   HERO SECTION � VERY SMALL PHONES (= 360px, e.g. iPhone SE, Galaxy A)
-   -------------------------------------------------------------------------- */
-@media (max-width: 360px) {
-  .hero-title {
-    font-size: 1.6rem;
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
   }
 
-  .section-title {
-    font-size: 1.45rem;
+  .trust-metric-text strong {
+    font-size: 0.88rem !important;
   }
 
-  .btn-lg {
-    padding: 13px 20px;
-    font-size: 0.95rem;
+  .trust-metric-text span {
+    font-size: 0.78rem !important;
   }
 
-  .container {
-    padding: 0 16px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   SYMPTOM CHECKER GRID � SMALL PHONES (= 480px)
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .symptom-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  /* ========================================================================
+     FIX 2: DOCTOR PHOTO CARD & CLINIC VISITING TIMINGS
+     ======================================================================== */
+  .hero-visual-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative !important;
   }
 
-  .symptom-card {
-    padding: 16px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   SERVICES / TREATMENT CARDS � SMALL PHONES (= 480px)
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .care-pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .service-card-body {
-    padding: 18px 16px;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   BEFORE / AFTER SLIDER � TOUCH HANDLE ENLARGEMENT
-   Make handle easier to grab with a finger on all phones
-   -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .ba-handle-circle {
-    width: 44px;
-    height: 44px;
-    border-width: 3px;
-  }
-
-  .ba-divider-line {
-    width: 3px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   APPOINTMENT FORM � SMALL PHONES (= 480px)
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .appointment-form-card {
-    padding: 20px 16px;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 12px 14px;
-    font-size: 16px !important; /* Crucial � prevents iOS Safari zoom-in */
-  }
-
-  .session-select-row {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .session-radio-card {
-    width: 100%;
-    padding: 14px 16px;
-  }
-
-  .slot-pills-row {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .slot-pill {
-    width: 100%;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   TESTIMONIALS � SMALL PHONES
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .testimonials-slider {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .testimonial-card {
-    padding: 20px 16px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   FOOTER � VERY SMALL PHONES (= 360px)
-   -------------------------------------------------------------------------- */
-@media (max-width: 360px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .footer-bottom-inner {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   MOBILE FLOATING BOTTOM BAR � SAFE AREA INSET
-   Ensures it doesn't hide behind iPhone home indicator bar
-   -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .mobile-floating-bar {
-    padding-bottom: calc(10px + env(safe-area-inset-bottom));
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
-
-  body {
-    padding-bottom: calc(65px + env(safe-area-inset-bottom));
-  }
-}
-
-/* --------------------------------------------------------------------------
-   GENERAL SECTIONS � PADDING REDUCTION ON SMALL PHONES
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  section {
-    padding-top: 48px !important;
-    padding-bottom: 48px !important;
-  }
-
-  .section-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 28px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   GOOGLE MAP EMBED � MOBILE FULL WIDTH
-   -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .map-viewport {
-    height: 240px;
-  }
-
-  .map-viewport iframe {
-    height: 240px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   iOS RUBBER BAND FIX � prevent body horizontal scroll artifacts
-   -------------------------------------------------------------------------- */
-html, body {
-  overscroll-behavior-x: none;
-}
-
-/* ==========================================================================
-   TARGETED FIXES: 3 SECTIONS THAT SHOWED HALF ON PHONE
-   1) Hero "Welcome" section  2) Doctor photo + timings  3) Appointment form
-   ========================================================================== */
-
-/* --- FIX 1: Hero section – ensure full single-column layout on all phones --- */
-@media (max-width: 1024px) {
-  /* Hero text content: full width, no overflow */
-  .hero-content {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .hero-badge-container {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .hero-cta-group {
-    align-items: center;
-  }
-
-  .hero-trust-metrics {
-    justify-content: center;
-  }
-
-  .signboard-pills-bar {
-    text-align: left;
-  }
-}
-
-/* --- FIX 2: Doctor photo card + floating timings card --- */
-@media (max-width: 1024px) {
-  /* The photo card must be capped so it doesn't try to be desktop-wide */
   .hero-main-card {
-    max-width: 420px;
-    margin: 0 auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-md) !important;
+    overflow: hidden !important;
+    position: relative !important;
   }
 
-  /* Floating timings card: switch from absolute to relative flow on mobile
-     so it's never clipped or half-shown */
+  .hero-image-wrap {
+    width: 100% !important;
+    aspect-ratio: 4/3.6 !important;
+    max-height: 320px !important;
+  }
+
+  .hero-stamp-badge {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 6px 10px !important;
+    gap: 6px !important;
+  }
+
+  .stamp-icon {
+    font-size: 1.1rem !important;
+  }
+
+  .stamp-title {
+    font-size: 0.62rem !important;
+  }
+
+  .stamp-sub {
+    font-size: 0.72rem !important;
+  }
+
+  /* Timings Card: Normal natural document flow below photo on mobile */
   .hero-floating-timings {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    margin-top: 16px;
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-/* Extra size reduction for small phones */
-@media (max-width: 480px) {
-  .hero-main-card {
-    max-width: 100%;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 14px !important;
+    padding: 14px !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-sm) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
   }
 
-  .hero-floating-timings {
-    max-width: 100%;
-    padding: 14px 16px;
-    flex-wrap: wrap;
-    gap: 12px;
+  .floating-timings-col {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .floating-clock-icon {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1.15rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .floating-timings-text strong {
+    font-size: 0.86rem !important;
   }
 
   .floating-timings-text p {
-    font-size: 0.76rem;
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
   }
-}
 
-/* --- FIX 3: Appointment form section – full width, no overflow --- */
-@media (max-width: 1024px) {
+  .hero-floating-timings .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 11px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* ========================================================================
+     FIX 3: APPOINTMENT BOOKING SECTION ("SCHEDULE YOUR VISIT")
+     ======================================================================== */
   .appointment-section {
-    padding: 60px 0;
-    overflow: hidden;
+    padding: 44px 0 !important;
+    overflow: hidden !important;
   }
 
-  /* Left info panel: full width, text centered */
+  .appointment-section::before {
+    display: none !important; /* Hide decorative circle that causes overflow */
+  }
+
+  .appointment-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 28px !important;
+  }
+
   .booking-perks {
-    text-align: center;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
   }
 
   .booking-perks h2 {
-    font-size: 2rem;
+    font-size: 1.7rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
   }
 
-  /* Form card: full width, readable on phone */
-  .appointment-form-card {
-    width: 100%;
-    max-width: 100%;
-    padding: 28px 20px;
-    border-radius: var(--radius-md);
+  .booking-perks p {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
   }
 
   .timings-highlight-box {
-    text-align: left;
+    padding: 16px !important;
+    margin-bottom: 18px !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .timings-highlight-box h4 {
+    font-size: 0.95rem !important;
+    margin-bottom: 10px !important;
   }
 
   .slot-pills-row {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .appointment-section {
-    padding: 50px 0;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
   }
 
-  .booking-perks h2 {
-    font-size: 1.7rem;
+  .slot-pill {
+    width: 100% !important;
+    padding: 10px 14px !important;
   }
 
+  .slot-pill span {
+    font-size: 0.76rem !important;
+  }
+
+  .slot-pill strong {
+    font-size: 0.92rem !important;
+  }
+
+  .instant-call-help {
+    padding: 12px 14px !important;
+    border-radius: var(--radius-sm) !important;
+    gap: 12px !important;
+  }
+
+  .instant-call-help strong {
+    font-size: 0.86rem !important;
+  }
+
+  .instant-call-help span {
+    font-size: 0.78rem !important;
+  }
+
+  .facility-amenities-strip {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-top: 16px !important;
+  }
+
+  .amenity-chip {
+    font-size: 0.74rem !important;
+    padding: 5px 10px !important;
+  }
+
+  /* Booking Form Card */
   .appointment-form-card {
-    padding: 20px 16px;
-    border-radius: var(--radius-sm);
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 22px 16px !important;
+    border-radius: var(--radius-md) !important;
+    box-sizing: border-box !important;
+  }
+
+  .appointment-form-card h3 {
+    font-size: 1.35rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  .appointment-form-card p {
+    font-size: 0.86rem !important;
+    margin-bottom: 18px !important;
+  }
+
+  .form-group-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  .form-group {
+    width: 100% !important;
+    margin-bottom: 14px !important;
+  }
+
+  .form-group label {
+    font-size: 0.84rem !important;
+    margin-bottom: 6px !important;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
-    width: 100%;
-    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 16px !important; /* Prevents iOS auto-zoom */
+    padding: 12px 14px !important;
   }
 
-  /* Prevent any child element from overflowing form card */
-  .appointment-form-card * {
-    max-width: 100%;
+  .session-select-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .session-radio-card {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-submit-row .btn {
+    font-size: 0.95rem !important;
+    padding: 14px !important;
+  }
+
+  /* --- Symptom Assessment Checker --- */
+  .interactive-assessment-section {
+    padding: 44px 0 !important;
+  }
+
+  .assessment-container-box {
+    padding: 22px 16px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .symptom-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .symptom-card {
+    padding: 14px !important;
+  }
+
+  .symptom-card-header h4 {
+    font-size: 0.95rem !important;
+  }
+
+  .assessment-result-card {
+    padding: 18px 16px !important;
+  }
+
+  /* --- Services & Treatments Grid --- */
+  .services-section {
+    padding: 44px 0 !important;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .service-card {
+    padding: 20px 18px !important;
+  }
+
+  .care-pillars-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* --- About Section --- */
+  .about-section {
+    padding: 44px 0 !important;
+  }
+
+  .about-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  .about-image-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .doctor-qual-box {
+    padding: 16px !important;
+  }
+
+  /* --- Before / After Slider --- */
+  .before-after-section {
+    padding: 44px 0 !important;
+  }
+
+  .ba-handle-circle {
+    width: 44px !important;
+    height: 44px !important;
+    border-width: 3px !important;
+  }
+
+  .ba-quick-buttons {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .ba-quick-btn {
+    font-size: 0.78rem !important;
+    padding: 8px 12px !important;
+  }
+
+  /* --- Testimonials --- */
+  .testimonials-section {
+    padding: 44px 0 !important;
+  }
+
+  .testimonials-slider {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+
+  .testimonial-card {
+    padding: 20px 16px !important;
+  }
+
+  /* --- Location & Map Section --- */
+  .location-section {
+    padding: 44px 0 !important;
+  }
+
+  .location-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .location-info-card {
+    padding: 22px 16px !important;
+  }
+
+  .map-viewport {
+    height: 230px !important;
+  }
+
+  .map-viewport iframe {
+    height: 230px !important;
+  }
+
+  .map-card-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .map-card-footer .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* --- Footer --- */
+  .site-footer {
+    padding: 48px 0 24px 0 !important;
+  }
+
+  .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column !important;
+    gap: 10px !important;
+    text-align: center !important;
+  }
+
+  /* --- Sticky Floating Mobile Bar --- */
+  .mobile-floating-bar {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: #FFFFFF !important;
+    border-top: 1px solid var(--border-subtle) !important;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom)) 12px !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1) !important;
+    z-index: 999 !important;
+  }
+
+  .mobile-bar-actions {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .mobile-bar-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    padding: 6px 2px !important;
+    font-size: 0.72rem !important;
+    min-height: 44px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   EXTRA SMALL PHONES (<= 375px, e.g. iPhone SE, compact Androids)
+   -------------------------------------------------------------------------- */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 1.6rem !important;
+  }
+
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+
+  .btn {
+    font-size: 0.88rem !important;
+    padding: 12px 16px !important;
+  }
+
+  .container {
+    padding: 0 12px !important;
+  }
+}
+/* --------------------------------------------------------------------------
+   CRITICAL FLEX & GRID AUTO-SHRINK FIX (prevents min-width: auto overflow)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  *, *::before, *::after {
+    min-width: 0;
+  }
+
+  .nav-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    overflow: hidden !important;
+  }
+
+  .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    margin-right: -4px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-stamp-badge {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    max-width: calc(100% - 16px) !important;
+    padding: 4px 8px !important;
+  }
+
+  .doctor-reg-pill {
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  .doctor-reg-pill span {
+    word-break: break-word !important;
+  }
+
+  .clinic-status-badge {
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  .clinic-status-badge span {
+    word-break: break-word !important;
+  }
+
+  .mobile-floating-bar {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-bar-actions {
+    display: flex !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+    gap: 2px !important;
+  }
+
+  .mobile-bar-btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
   }
 }
