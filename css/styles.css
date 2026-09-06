@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    ORACARE DENTAL CLINIC - MAIN STYLESHEET
    Doctor: Dr. Pratiksha Barge | Dental Surgeon (MUHS) | Reg No. A-51828
    Color Palette: Teal/Sea Green, Medical Navy Blue, Clean White, Mint
@@ -1667,7 +1667,7 @@ img, svg {
   color: #334155;
 }
 
-.form-group input,
+.form-group input:not([type="radio"]):not([type="checkbox"]),
 .form-group select,
 .form-group textarea {
   width: 100%;
@@ -1680,7 +1680,7 @@ img, svg {
   transition: all 0.2s ease;
 }
 
-.form-group input:focus,
+.form-group input:not([type="radio"]):not([type="checkbox"]):focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
@@ -2267,7 +2267,7 @@ a, button, [role="button"],
 }
 
 /* Ensure inputs never auto-zoom in iOS Safari */
-input, select, textarea {
+input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   font-size: 16px !important;
   border-radius: var(--radius-sm);
   -webkit-appearance: none;
@@ -2798,7 +2798,7 @@ input, select, textarea {
     margin-bottom: 6px !important;
   }
 
-  .form-group input,
+  .form-group input:not([type="radio"]):not([type="checkbox"]),
   .form-group select,
   .form-group textarea {
     width: 100% !important;
@@ -2811,13 +2811,73 @@ input, select, textarea {
   .session-select-row {
     display: flex !important;
     flex-direction: column !important;
-    gap: 8px !important;
+    gap: 10px !important;
+    width: 100% !important;
   }
 
   .session-radio-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 14px !important;
     width: 100% !important;
-    padding: 12px 14px !important;
+    padding: 14px 16px !important;
     box-sizing: border-box !important;
+    border: 1.5px solid var(--border-subtle) !important;
+    border-radius: var(--radius-sm) !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    background: #FFFFFF !important;
+  }
+
+  .session-radio-card input[type="radio"] {
+    -webkit-appearance: radio !important;
+    appearance: auto !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    max-width: 20px !important;
+    min-height: 20px !important;
+    max-height: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    accent-color: var(--primary) !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+  }
+
+  .session-radio-card div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex: 1 !important;
+    gap: 2px !important;
+  }
+
+  .session-radio-card strong {
+    display: block !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    color: var(--text-main) !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  .session-radio-card span {
+    display: block !important;
+    font-size: 0.8rem !important;
+    color: var(--text-muted) !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  .session-radio-card.active {
+    border-color: var(--primary) !important;
+    background: #F0FDFA !important;
+    box-shadow: 0 2px 8px rgba(13, 148, 136, 0.12) !important;
   }
 
   .form-submit-row .btn {
