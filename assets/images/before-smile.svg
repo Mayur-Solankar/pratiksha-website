@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgBefore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bgBefore)"/>
+  
+  <!-- Subtle mouth backdrop -->
+  <ellipse cx="300" cy="205" rx="195" ry="110" fill="#1E293B" opacity="0.12"/>
+  <ellipse cx="300" cy="205" rx="180" ry="85" fill="#47141E" opacity="0.85"/>
+
+  <!-- Teeth diagram before: Slight misalignment, dull yellowish shade, natural gaps -->
+  <g transform="translate(300, 185)">
+    <!-- Upper Gums -->
+    <path d="M -170,-35 Q 0,-65 170,-35 C 170,-35 150,-18 0,-18 C -150,-18 -170,-35 -170,-35 Z" fill="#FDA4AF"/>
+
+    <!-- Natural teeth with coffee stains and slight tilt -->
+    <rect x="-135" y="-18" width="28" height="66" rx="6" fill="#FDE68A" stroke="#94A3B8" stroke-width="1.5" transform="rotate(4 -121 15)"/>
+    <rect x="-102" y="-18" width="30" height="72" rx="6" fill="#FEF08A" stroke="#94A3B8" stroke-width="1.5" transform="rotate(-3 -87 17)"/>
+    <rect x="-67" y="-18" width="33" height="82" rx="7" fill="#FEF08A" stroke="#94A3B8" stroke-width="1.5" transform="rotate(3 -50 22)"/>
+    
+    <!-- Central Incisors with slight gap & warm tint -->
+    <rect x="-30" y="-18" width="37" height="90" rx="8" fill="#FDE047" stroke="#94A3B8" stroke-width="1.5" transform="rotate(-2 -11 26)"/>
+    <rect x="11" y="-18" width="37" height="90" rx="8" fill="#FEF08A" stroke="#94A3B8" stroke-width="1.5" transform="rotate(4 30 26)"/>
+    
+    <rect x="52" y="-18" width="33" height="82" rx="7" fill="#FDE68A" stroke="#94A3B8" stroke-width="1.5" transform="rotate(-3 69 22)"/>
+    <rect x="89" y="-18" width="30" height="72" rx="6" fill="#FEF08A" stroke="#94A3B8" stroke-width="1.5" transform="rotate(2 104 17)"/>
+    <rect x="123" y="-18" width="28" height="66" rx="6" fill="#FDE68A" stroke="#94A3B8" stroke-width="1.5"/>
+
+    <!-- Subtle stain markers -->
+    <ellipse cx="-12" cy="24" rx="4" ry="7" fill="#CA8A04" opacity="0.35"/>
+    <ellipse cx="28" cy="18" rx="3" ry="5" fill="#CA8A04" opacity="0.3"/>
+    
+    <!-- Lower Lip -->
+    <path d="M -175,76 Q 0,126 175,76 Q 0,154 -175,76 Z" fill="#FB7185"/>
+  </g>
+</svg>

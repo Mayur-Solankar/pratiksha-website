@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E6F7F5"/>
+      <stop offset="100%" stop-color="#CCEFEA"/>
+    </linearGradient>
+    <linearGradient id="tealAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00A896"/>
+      <stop offset="100%" stop-color="#0E7490"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="700" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle decorative medical crosses and circles -->
+  <g opacity="0.15" fill="#00A896">
+    <circle cx="80" cy="90" r="30"/>
+    <circle cx="530" cy="180" r="45"/>
+    <circle cx="90" cy="580" r="40"/>
+    <path d="M 500,500 h 20 v -20 h 20 v 20 h 20 v 20 h -20 v 20 h -20 v -20 h -20 z"/>
+    <path d="M 60,300 h 15 v -15 h 15 v 15 h 15 v 15 h -15 v 15 h -15 v -15 h -15 z"/>
+  </g>
+
+  <!-- Doctor Silhouette Avatar -->
+  <g transform="translate(150, 110)">
+    <!-- Aura Ring -->
+    <circle cx="150" cy="150" r="140" fill="#FFFFFF" opacity="0.9" stroke="#00A896" stroke-width="4" stroke-dasharray="8 6"/>
+    <circle cx="150" cy="150" r="125" fill="#F0FAF8"/>
+    
+    <!-- Head & Hair -->
+    <circle cx="150" cy="105" r="52" fill="#0F766E"/>
+    <circle cx="150" cy="115" r="46" fill="#FEE2E2"/>
+    <path d="M 110,105 C 110,65 190,65 190,105 C 190,95 180,80 150,80 C 120,80 110,95 110,105 Z" fill="#0F766E"/>
+    
+    <!-- Coat & Stethoscope -->
+    <path d="M 80,240 C 80,180 105,160 150,160 C 195,160 220,180 220,240 Z" fill="#FFFFFF" stroke="#0D9488" stroke-width="3"/>
+    <path d="M 125,165 L 150,210 L 175,165" fill="#00A896" opacity="0.2"/>
+    <!-- Stethoscope -->
+    <path d="M 125,170 C 125,215 175,215 175,170" fill="none" stroke="#263B8B" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 150,215 L 150,235" stroke="#263B8B" stroke-width="4"/>
+    <circle cx="150" cy="240" r="8" fill="#263B8B"/>
+  </g>
+
+  <!-- Informational Banner -->
+  <g transform="translate(60, 470)">
+    <rect x="0" y="0" width="480" height="175" rx="16" fill="#FFFFFF" stroke="#00A896" stroke-width="2" filter="drop-shadow(0 6px 12px rgba(0,168,150,0.12))"/>
+    
+    <text x="240" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#0F766E" text-anchor="middle">
+      Dr. Pratiksha Barge
+    </text>
+    <text x="240" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#263B8B" text-anchor="middle">
+      DENTAL SURGEON (MUHS)
+    </text>
+    <text x="240" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#0D9488" text-anchor="middle">
+      Reg No. - A-51828
+    </text>
+    
+    <line x1="60" y1="105" x2="420" y2="105" stroke="#E2E8F0" stroke-width="1.5"/>
+
+    <g transform="translate(240, 138)">
+      <rect x="-160" y="-18" width="320" height="34" rx="17" fill="#E6F7F5"/>
+      <text x="0" y="4" font-family="system-ui, -apple-system, sans-serif" font-size="12.5" font-weight="700" fill="#0F766E" text-anchor="middle">
+        📷 Space for Doctor's Real Photo
+      </text>
+    </g>
+  </g>
+</svg>

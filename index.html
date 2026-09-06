@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oracare Dental Clinic | Dr. Pratiksha Barge (MUHS) | Dental Surgeon</title>
+  <meta name="description" content="Oracare Dental Clinic (ओराकेअर दातांचा दवाखाना) by Dr. Pratiksha Barge, Dental Surgeon (MUHS), Reg No. A-51828. Root Canal, Implants, Aligners & Braces, Smile Design, Crown & Bridges. Call 9545058909.">
+  <meta name="theme-color" content="#0D9488">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP ANNOUNCEMENT & LIVE CLINIC STATUS BAR
+       ========================================================================== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-inner">
+        <!-- Live Status and Hours -->
+        <div class="top-bar-left">
+          <div class="clinic-status-badge" id="clinicLiveStatus">
+            <span class="status-dot online"></span>
+            <span>Checking Clinic Status...</span>
+          </div>
+          <div class="clinic-timings-quick">
+            <i data-lucide="clock" style="width: 14px; height: 14px;"></i>
+            <span>Morning: <strong>10:00 AM – 3:00 PM</strong> | Evening: <strong>5:00 PM – 9:00 PM</strong></span>
+          </div>
+        </div>
+
+        <!-- Contact & Emergency -->
+        <div class="top-bar-right">
+          <a href="tel:9545058909" class="top-contact-link">
+            <i data-lucide="phone-call" style="width: 14px; height: 14px;"></i>
+            <span>+91 9545058909</span>
+          </a>
+          <a href="https://wa.me/919545058909?text=Hello%20Dr.%20Pratiksha,%20I%20would%20like%20to%20consult%20for%20dental%20treatment." target="_blank" class="top-contact-link highlight">
+            <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
+            <span>WhatsApp Quick Chat</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN NAVIGATION HEADER
+       ========================================================================== -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="nav-container">
+        <!-- Clinic Brand Logo -->
+        <a href="#home" class="brand-logo" title="Oracare Dental Clinic">
+          <img src="assets/logo.svg" alt="Oracare Dental Clinic Logo" class="brand-logo-img">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#services" class="nav-link">Treatments</a></li>
+          <li><a href="#assessment" class="nav-link">Symptom Checker</a></li>
+          <li><a href="#about" class="nav-link">Dr. Pratiksha</a></li>
+          <li><a href="#transformation" class="nav-link">Smile Gallery</a></li>
+          <li><a href="#location" class="nav-link">Clinic & Hours</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+
+        <!-- Navigation Action Buttons -->
+        <div class="nav-actions">
+          <a href="tel:9545058909" class="btn btn-secondary btn-sm" title="Call Clinic">
+            <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
+            <span>Call</span>
+          </a>
+          <a href="#appointment" class="btn btn-primary btn-sm">
+            <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+            <span>Book Appointment</span>
+          </a>
+
+          <!-- Hamburger for Mobile -->
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu">
+            <i data-lucide="menu" style="width: 26px; height: 26px;"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <div class="marathi-text" style="color: var(--primary); font-size: 1.1rem;">ओराकेअर दातांचा दवाखाना</div>
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+      </div>
+      <div class="drawer-nav">
+        <a href="#home" class="drawer-link">Home</a>
+        <a href="#services" class="drawer-link">Featured Treatments</a>
+        <a href="#assessment" class="drawer-link">Smart Symptom Checker</a>
+        <a href="#about" class="drawer-link">About Dr. Pratiksha</a>
+        <a href="#transformation" class="drawer-link">Smile Transformation</a>
+        <a href="#appointment" class="drawer-link">Book Appointment</a>
+        <a href="#location" class="drawer-link">Location & Timings</a>
+        <a href="#faq" class="drawer-link">Patient FAQs</a>
+      </div>
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+        <a href="tel:9545058909" class="btn btn-primary" style="width: 100%;">
+          <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i>
+          <span>Call 9545058909</span>
+        </a>
+        <a href="https://wa.me/919545058909" target="_blank" class="btn btn-whatsapp" style="width: 100%;">
+          <i data-lucide="message-square" style="width: 18px; height: 18px;"></i>
+          <span>WhatsApp Chat</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="home">
+    <div class="hero-bg-shapes">
+      <div class="hero-shape-1"></div>
+      <div class="hero-shape-2"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Hero Left Content -->
+        <div class="hero-content">
+          <!-- Credentials Badges -->
+          <div class="hero-badge-container">
+            <div class="doctor-reg-pill">
+              <i data-lucide="award" style="width: 16px; height: 16px; color: var(--primary);"></i>
+              <span>Dr. Pratiksha Barge • Dental Surgeon (MUHS)</span>
+            </div>
+            <div class="marathi-badge-tag marathi-text">
+              ओराकेअर दातांचा दवाखाना
+            </div>
+            <a href="#location" class="doctor-reg-pill" style="border-color: #CCFBF1; color: #0F766E; text-decoration: none;">
+              <i data-lucide="map-pin" style="width: 15px; height: 15px; color: var(--primary);"></i>
+              <span>Punawale, Pimpri-Chinchwad (411033)</span>
+            </a>
+          </div>
+
+          <h1 class="hero-title">
+            Gentle, Advanced & Painless Dental Care for <span class="highlight-teal">Your Family.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Welcome to <strong>Oracare Dental Clinic</strong>. Led by <strong>Dr. Pratiksha Barge</strong> (Reg No. A-51828), we deliver painless Root Canal treatments, permanent dental implants, invisible aligners, and complete smile transformations with state-of-the-art sterilization and compassionate patient care.
+          </p>
+
+          <!-- Core Treatments Strip (Direct from Signboard) -->
+          <div class="signboard-pills-bar">
+            <div class="signboard-pills-title">
+              <i data-lucide="sparkles" style="width: 15px; height: 15px;"></i>
+              <span>Core Clinical Specialities</span>
+            </div>
+            <div class="signboard-pills-list">
+              <a href="#service-rct" class="signboard-chip">ROOT CANAL</a>
+              <a href="#service-implants" class="signboard-chip">IMPLANTS</a>
+              <a href="#service-aligners" class="signboard-chip">ALIGNERS & BRACES</a>
+              <a href="#service-smile" class="signboard-chip">SMILE DESIGN</a>
+              <a href="#service-crowns" class="signboard-chip">CROWN & BRIDGES</a>
+            </div>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#appointment" class="btn btn-primary btn-lg">
+              <i data-lucide="calendar-check" style="width: 20px; height: 20px;"></i>
+              <span>Book Consultation</span>
+            </a>
+            <a href="https://wa.me/919545058909?text=Hi%20Dr.%20Pratiksha,%20I%20would%20like%20to%20inquire%20about%20dental%20treatment%20at%20Oracare%20Clinic." target="_blank" class="btn btn-whatsapp btn-lg">
+              <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+              <span>WhatsApp Us</span>
+            </a>
+            <a href="tel:9545058909" class="btn btn-secondary btn-lg">
+              <i data-lucide="phone-outgoing" style="width: 20px; height: 20px;"></i>
+              <span>Call 9545058909</span>
+            </a>
+          </div>
+
+          <!-- Trust Metrics -->
+          <div class="hero-trust-metrics">
+            <div class="trust-metric-item">
+              <div class="trust-metric-icon">
+                <i data-lucide="shield-check"></i>
+              </div>
+              <div class="trust-metric-text">
+                <strong>100% Sterilized</strong>
+                <span>Hospital-grade hygiene protocols</span>
+              </div>
+            </div>
+
+            <div class="trust-metric-item">
+              <div class="trust-metric-icon">
+                <i data-lucide="heart-pulse"></i>
+              </div>
+              <div class="trust-metric-text">
+                <strong>Painless Care</strong>
+                <span>Gentle anesthesia & rotary RCT</span>
+              </div>
+            </div>
+
+            <div class="trust-metric-item">
+              <div class="trust-metric-icon">
+                <i data-lucide="sparkle"></i>
+              </div>
+              <div class="trust-metric-text">
+                <strong>Digital Tech</strong>
+                <span>Precision aligners & crowns</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Visual Card -->
+        <div class="hero-visual-card">
+          <div class="hero-main-card">
+            <div class="hero-image-wrap">
+              <!-- Smart auto-loading: Loads real doctor photo if dropped into assets/images/dr-pratiksha.jpg, otherwise shows designed SVG badge -->
+              <img src="assets/images/dr-pratiksha.jpg" 
+                   onerror="this.onerror=null; this.src='assets/images/dr-pratiksha-placeholder.svg';"
+                   alt="Dr. Pratiksha Barge - Dental Surgeon MUHS"
+                   id="heroDoctorImg">
+            </div>
+
+            <!-- Floating Stamp Badge -->
+            <div class="hero-stamp-badge">
+              <div class="stamp-icon">
+                <i data-lucide="badge-check"></i>
+              </div>
+              <div>
+                <div class="stamp-title">State Reg. Verified</div>
+                <div class="stamp-sub">Reg No. A-51828</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Timings Card -->
+          <div class="hero-floating-timings">
+            <div class="floating-timings-col">
+              <div class="floating-clock-icon">
+                <i data-lucide="clock"></i>
+              </div>
+              <div class="floating-timings-text">
+                <strong>Clinic Visiting Timings</strong>
+                <p>Morning: 10:00 AM – 3:00 PM<br>Evening: 5:00 PM – 9:00 PM</p>
+              </div>
+            </div>
+            <a href="#appointment" class="btn btn-primary btn-sm">
+              <span>Reserve</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE FEATURE: SMART SMILE ASSESSMENT & SYMPTOM CHECKER
+       ========================================================================== -->
+  <section class="interactive-assessment-section" id="assessment">
+    <div class="container">
+      <div class="assessment-container-box">
+        <div class="assessment-header">
+          <div class="section-tag">Interactive Diagnostic Tool</div>
+          <h2 class="section-title">What Brings You In Today?</h2>
+          <p class="section-subtitle" style="margin-bottom: 0;">
+            Click on the symptom or dental concern you are experiencing. Our smart assistant will suggest the recommended procedure and pre-fill your appointment booking!
+          </p>
+        </div>
+
+        <!-- Symptom Clickable Grid -->
+        <div class="symptom-grid">
+          <div class="symptom-card" data-symptom="toothache">
+            <div class="check-circle"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span class="symptom-icon">⚡</span>
+            <h4>Toothache / Sensitivity</h4>
+            <p>Throbbing pain, sensitive to hot or cold, pain when biting</p>
+          </div>
+
+          <div class="symptom-card" data-symptom="crooked">
+            <div class="check-circle"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span class="symptom-icon">🦷</span>
+            <h4>Crooked or Gapped Teeth</h4>
+            <p>Irregular spacing, overlapping teeth, bite misalignment</p>
+          </div>
+
+          <div class="symptom-card" data-symptom="missing">
+            <div class="check-circle"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span class="symptom-icon">🔩</span>
+            <h4>Missing Tooth</h4>
+            <p>Extracted or lost tooth, difficulty chewing food</p>
+          </div>
+
+          <div class="symptom-card" data-symptom="discolored">
+            <div class="check-circle"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span class="symptom-icon">✨</span>
+            <h4>Dull or Stained Teeth</h4>
+            <p>Tea/coffee stains, yellowing enamel, wedding smile makeover</p>
+          </div>
+
+          <div class="symptom-card" data-symptom="gums">
+            <div class="check-circle"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+            <span class="symptom-icon">🩸</span>
+            <h4>Bleeding Gums / Plaque</h4>
+            <p>Bleeding during brushing, bad breath, tartar build-up</p>
+          </div>
+        </div>
+
+        <!-- Dynamic Diagnosis Result Card -->
+        <div class="assessment-result-card" id="assessmentResultCard">
+          <div class="result-content-wrap">
+            <div class="result-info">
+              <h3 id="resultTitle">Recommended Treatment</h3>
+              <p id="resultDesc">Select an issue above to see clinical advice and suggested procedures.</p>
+              <div class="result-badges">
+                <span class="result-badge" id="resultBadge">Standard Procedure</span>
+                <span class="result-badge">Available at Oracare</span>
+              </div>
+            </div>
+            <div>
+              <a href="#appointment" class="btn btn-primary" id="resultBookBtn">
+                <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                <span>Book This Treatment</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TREATMENTS & SERVICES (SIGNBOARD HIGHLIGHTS + GENERAL DENTISTRY)
+       ========================================================================== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-tag navy">Clinical Specialities</div>
+        <h2 class="section-title">Comprehensive Dental Treatments at <span>Oracare</span></h2>
+        <p class="section-subtitle">
+          From painless root canals and tooth implants to invisible aligners and smile makeovers, Dr. Pratiksha Barge provides tailored, gentle dental solutions.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- 1. ROOT CANAL -->
+        <div class="service-card featured" id="service-rct">
+          <div class="service-badge-strip">Featured on Signboard</div>
+          <div class="service-icon-box">
+            <i data-lucide="activity"></i>
+          </div>
+          <h3 class="service-title">Root Canal Treatment (RCT)</h3>
+          <p class="service-desc">
+            Save your natural infected or painful tooth with our modern rotary, painless root canal therapy. Performed with high precision and single-sitting capability for quick comfort.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Painless local anesthesia techniques</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Single-visit or gentle multi-stage RCT</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Crown sealing for long-term tooth durability</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#appointment" class="service-action-link">Book RCT Consultation &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 2. IMPLANTS -->
+        <div class="service-card featured" id="service-implants">
+          <div class="service-badge-strip">Featured on Signboard</div>
+          <div class="service-icon-box">
+            <i data-lucide="anchor"></i>
+          </div>
+          <h3 class="service-title">Dental Implants</h3>
+          <p class="service-desc">
+            The gold-standard permanent replacement for missing teeth. Titanium fixtures integrate into the jawbone to provide realistic, rock-solid chewing function that looks completely natural.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Single tooth & multi-tooth restorations</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Prevents jawbone shrinkage and facial sagging</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Lifelong permanent solution with proper care</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#appointment" class="service-action-link">Inquire About Implants &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 3. ALIGNERS & BRACES -->
+        <div class="service-card featured" id="service-aligners">
+          <div class="service-badge-strip">Featured on Signboard</div>
+          <div class="service-icon-box">
+            <i data-lucide="smile"></i>
+          </div>
+          <h3 class="service-title">Aligners & Braces</h3>
+          <p class="service-desc">
+            Straighten misaligned, overlapping, or gapped teeth comfortably. Choose between discreet invisible clear aligners or traditional ceramic & metal braces for teens and adults.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Invisible, removable clear aligners</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Aesthetic tooth-colored ceramic braces</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Digital smile alignment simulation</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#appointment" class="service-action-link">Start Smile Alignment &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 4. SMILE DESIGN -->
+        <div class="service-card featured" id="service-smile">
+          <div class="service-badge-strip">Featured on Signboard</div>
+          <div class="service-icon-box">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <h3 class="service-title">Smile Design & Makeovers</h3>
+          <p class="service-desc">
+            Craft a radiant, camera-ready smile. We combine porcelain veneers, aesthetic composite bonding, gum contouring, and advanced teeth whitening tailored to your facial aesthetics.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Custom ultra-thin ceramic veneers</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> In-office laser teeth whitening</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Chipped and gap teeth aesthetic repairs</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#appointment" class="service-action-link">Design Your Smile &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 5. CROWN & BRIDGES -->
+        <div class="service-card featured" id="service-crowns">
+          <div class="service-badge-strip">Featured on Signboard</div>
+          <div class="service-icon-box">
+            <i data-lucide="shield"></i>
+          </div>
+          <h3 class="service-title">Crown & Bridges</h3>
+          <p class="service-desc">
+            Restore broken, weakened, or missing teeth with CAD/CAM designed Zirconia and ceramic dental crowns. Natural shading guarantees an imperceptible blend with neighboring teeth.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> High-translucency Zirconia crowns</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Fixed dental bridges for missing teeth</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Metal-free, biocompatible materials</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#appointment" class="service-action-link">Restore Your Tooth &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 6. GENERAL & PREVENTIVE DENTISTRY -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <i data-lucide="stethoscope"></i>
+          </div>
+          <h3 class="service-title">Scaling & Preventive Care</h3>
+          <p class="service-desc">
+            Keep your teeth and gums healthy for life. Ultrasonic teeth cleaning, polishing, cavity fillings, and periodic dental wellness checkups for all family members.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Deep tartar & stain removal (Scaling)</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Tooth-colored composite fillings</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Bad breath & gum infection therapy</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#appointment" class="service-action-link">Book Routine Cleaning &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 7. PEDIATRIC DENTISTRY -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <i data-lucide="heart"></i>
+          </div>
+          <h3 class="service-title">Pediatric Dental Care</h3>
+          <p class="service-desc">
+            Friendly, warm, and gentle dental checkups designed specifically for children. We make dental visits fun and anxiety-free while protecting milk teeth and permanent molars.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Fluoride treatment & pit fissure sealants</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Gentle milk tooth filling & pulpectomy</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Habit correction (thumb sucking, tongue thrust)</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="#appointment" class="service-action-link">Book for Your Child &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 8. EMERGENCY CARE & SURGERY -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <i data-lucide="phone-call"></i>
+          </div>
+          <h3 class="service-title">Emergency Toothache Relief</h3>
+          <p class="service-desc">
+            Sudden unbearable toothache, fractured tooth, or swollen jaw? Oracare prioritizes acute emergency cases to give you prompt, soothing pain relief right when you need it most.
+          </p>
+          <ul class="service-highlights">
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Immediate walk-in / same-day slots</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Wisdom tooth extraction & minor oral surgery</li>
+            <li><i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Direct doctor line: 9545058909</li>
+          </ul>
+          <div class="service-card-footer">
+            <a href="tel:9545058909" class="service-action-link" style="color: #EF4444;">Call Emergency Now &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MEET DR. PRATIKSHA BARGE & PRACTICE PHILOSOPHY
+       ========================================================================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Left Doctor Visual Box -->
+        <div class="about-image-wrapper">
+          <div class="about-image-card">
+            <!-- Doctor Photo with fallback placeholder -->
+            <img src="assets/images/dr-pratiksha.jpg" 
+                 onerror="this.onerror=null; this.src='assets/images/dr-pratiksha-placeholder.svg';"
+                 alt="Dr. Pratiksha Barge Dental Surgeon MUHS"
+                 id="aboutDoctorImg">
+          </div>
+
+          <!-- Verified Reg Badge -->
+          <div class="about-reg-floating-card">
+            <div class="about-reg-icon">
+              <i data-lucide="check-circle-2"></i>
+            </div>
+            <div class="about-reg-text">
+              <strong>Maharashtra Medical Council</strong>
+              <span>Reg No. - A-51828</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Doctor Bio & Practice Details -->
+        <div class="about-content">
+          <div class="section-tag">Meet Your Dental Surgeon</div>
+          <h2 class="doctor-name-heading">Dr. Pratiksha Barge</h2>
+          <div class="doctor-qualification-line">
+            <i data-lucide="graduation-cap" style="width: 22px; height: 22px; color: var(--navy);"></i>
+            <span>DENTAL SURGEON (MUHS)</span>
+          </div>
+
+          <p class="about-doctor-bio">
+            Graduated from the prestigious <strong>Maharashtra University of Health Sciences (MUHS)</strong>, Dr. Pratiksha Barge founded <strong>Oracare Dental Clinic (ओराकेअर दातांचा दवाखाना)</strong> with a singular mission: to make dental visits comfortable, painless, and transparent for every patient.
+          </p>
+
+          <p class="about-doctor-bio">
+            With clinical expertise spanning modern endodontics (root canal therapy), restorative implantology, orthodontic aligners, and aesthetic smile architecture, she blends gentle clinical hands with state-of-the-art dental technology to preserve your natural teeth and bring out your best smile.
+          </p>
+
+          <!-- 4 Pillars of Practice -->
+          <div class="care-pillars-grid">
+            <div class="care-pillar-item">
+              <i data-lucide="shield" class="care-pillar-icon"></i>
+              <div>
+                <h5>Autoclave Sterilization</h5>
+                <p>100% infection control with medical-grade multi-stage sterilization.</p>
+              </div>
+            </div>
+
+            <div class="care-pillar-item">
+              <i data-lucide="smile" class="care-pillar-icon"></i>
+              <div>
+                <h5>Painless Procedures</h5>
+                <p>Gentle numbing protocols and quiet modern dental instruments.</p>
+              </div>
+            </div>
+
+            <div class="care-pillar-item">
+              <i data-lucide="file-text" class="care-pillar-icon"></i>
+              <div>
+                <h5>Honest Consultation</h5>
+                <p>Clear treatment plans, zero hidden fees, and transparent guidance.</p>
+              </div>
+            </div>
+
+            <div class="care-pillar-item">
+              <i data-lucide="heart-handshake" class="care-pillar-icon"></i>
+              <div>
+                <h5>Patient Comfort First</h5>
+                <p>Calming ambiance designed to eliminate dental anxiety for all ages.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Official Signboard Verification Display -->
+          <div class="signboard-proof-box">
+            <div class="signboard-proof-text">
+              <strong>Official Clinic Signboard Verified</strong>
+              <p>Oracare Dental Clinic • Dr. Pratiksha Barge • Reg No. A-51828</p>
+            </div>
+            <a href="assets/signboard.png" target="_blank" class="btn btn-secondary btn-sm" title="View Signboard">
+              <i data-lucide="image" style="width: 16px; height: 16px;"></i>
+              <span>View Clinic Board</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE BEFORE & AFTER SMILE TRANSFORMATION SLIDER
+       ========================================================================== -->
+  <section class="transformation-section" id="transformation">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-tag">Smile Makeovers</div>
+        <h2 class="section-title">See The Transformation: <span>Before & After</span></h2>
+        <p class="section-subtitle">
+          Drag the interactive slider below to witness how modern cosmetic dentistry, aligners, and whitening restore teeth from dull and misaligned to radiant and confident.
+        </p>
+      </div>
+
+      <div class="transformation-container">
+        <div class="before-after-slider-card">
+          <!-- Interactive Drag Slider Box -->
+          <div class="ba-viewer-wrap" id="baSlider">
+            <!-- Base Layer: BEFORE Teeth -->
+            <div class="ba-layer ba-before">
+              <img src="assets/images/teeth-before.jpg" 
+                   onerror="this.onerror=null; this.src='assets/images/before-smile.svg';" 
+                   alt="Teeth Before Treatment"
+                   draggable="false">
+            </div>
+
+            <!-- Overlaid Top Layer: AFTER Teeth (clipped to reveal right side) -->
+            <div class="ba-layer ba-after" id="baAfterLayer">
+              <img src="assets/images/teeth-after.jpg" 
+                   onerror="this.onerror=null; this.src='assets/images/after-smile.svg';" 
+                   alt="Teeth After Oracare Smile Treatment"
+                   draggable="false">
+            </div>
+
+            <!-- Always-visible Floating Badges -->
+            <span class="ba-floating-label label-before">BEFORE</span>
+            <span class="ba-floating-label label-after">AFTER</span>
+
+            <!-- Invisible Full-cover Range Slider for 100% Reliable Touch & Drag -->
+            <input type="range" 
+                   min="0" 
+                   max="100" 
+                   value="50" 
+                   step="0.5" 
+                   class="ba-range-slider" 
+                   id="baRangeSlider" 
+                   aria-label="Drag to compare before and after smile transformation">
+
+            <!-- Visual Divider Handle -->
+            <div class="ba-handle" id="baHandle" style="left: 50%;">
+              <div class="ba-handle-button">
+                <span>⇄</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Comparison Controls Bar -->
+          <div class="ba-controls-bar">
+            <div class="ba-quick-buttons">
+              <button type="button" class="ba-quick-btn" data-pos="100" title="Show 100% Before">
+                ⟵ Show All Before
+              </button>
+              <button type="button" class="ba-quick-btn active" data-pos="50" title="50% Side-by-Side Comparison">
+                ⇄ 50% Split View
+              </button>
+              <button type="button" class="ba-quick-btn" data-pos="0" title="Show 100% After">
+                Show All After ⟶
+              </button>
+            </div>
+
+            <a href="#appointment" class="btn btn-primary btn-sm">
+              <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+              <span>Book Smile Makeover</span>
+            </a>
+          </div>
+
+          <div class="ba-slider-info" style="margin-top: 10px; border-top: none; padding-top: 0;">
+            <p><strong>💡 Interactive Tip:</strong> Drag the center slider left or right with your finger/mouse, or tap any quick button above to compare results instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE APPOINTMENT BOOKING & TIME-SLOT SELECTOR
+       ========================================================================== -->
+  <section class="appointment-section" id="appointment">
+    <div class="container">
+      <div class="appointment-grid">
+        <!-- Left Column: Timings & Doctor Perks -->
+        <div class="booking-perks">
+          <div class="section-tag" style="background: rgba(255,255,255,0.18); color: #FFFFFF;">Easy Online Scheduling</div>
+          <h2>Schedule Your Visit with Dr. Pratiksha Barge</h2>
+          <p>
+            Choose your preferred date and clinic session. Your appointment request will be instantly formatted and sent to Dr. Pratiksha's desk via WhatsApp (+91 9545058909) for immediate priority confirmation.
+          </p>
+
+          <!-- Timings Highlight Box -->
+          <div class="timings-highlight-box">
+            <h4>
+              <i data-lucide="clock" style="width: 20px; height: 20px;"></i>
+              <span>Official Clinic Timings (Monday to Saturday)</span>
+            </h4>
+            <div class="slot-pills-row">
+              <div class="slot-pill">
+                <span>Morning Session</span>
+                <strong>10:00 AM – 3:00 PM</strong>
+              </div>
+              <div class="slot-pill">
+                <span>Evening Session</span>
+                <strong>5:00 PM – 9:00 PM</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instant Call Help -->
+          <div class="instant-call-help">
+            <div class="phone-icon">
+              <i data-lucide="phone-call"></i>
+            </div>
+            <div>
+              <strong>Prefer to call directly?</strong>
+              <span>Reach Dr. Pratiksha directly at <strong>+91 9545058909</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Booking Form Card -->
+        <div class="appointment-form-card">
+          <h3>Request an Appointment</h3>
+          <p>Fill out the details below. We guarantee a prompt response.</p>
+
+          <form id="appointmentForm">
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="appointmentName">Patient Full Name *</label>
+                <input type="text" id="appointmentName" placeholder="e.g. Rahul Patil" required>
+              </div>
+
+              <div class="form-group">
+                <label for="appointmentPhone">Phone Number *</label>
+                <input type="tel" id="appointmentPhone" placeholder="e.g. 98XXXXXXXX" required>
+              </div>
+            </div>
+
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="appointmentDate">Preferred Date *</label>
+                <input type="date" id="appointmentDate" required>
+              </div>
+
+              <div class="form-group">
+                <label for="appointmentService">Service Needed</label>
+                <select id="appointmentService">
+                  <option value="General Consultation">General Dental Checkup</option>
+                  <option value="Root Canal">Root Canal Treatment (RCT)</option>
+                  <option value="Implants">Dental Implants</option>
+                  <option value="Aligners & Braces">Aligners & Braces</option>
+                  <option value="Smile Design">Smile Design / Whitening</option>
+                  <option value="Crown & Bridges">Crown & Bridges</option>
+                  <option value="Teeth Cleaning">Teeth Cleaning (Scaling)</option>
+                  <option value="Pediatric Care">Pediatric / Child Dentistry</option>
+                  <option value="Emergency Toothache">Emergency Toothache Relief</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Session Time Slot Selector (Morning vs Evening) -->
+            <div class="form-group">
+              <label>Select Clinic Session *</label>
+              <div class="session-select-row">
+                <label class="session-radio-card active">
+                  <input type="radio" name="session" value="Morning (10:00 AM - 3:00 PM)" checked>
+                  <div>
+                    <strong>Morning Session</strong>
+                    <span>10:00 AM – 3:00 PM</span>
+                  </div>
+                </label>
+
+                <label class="session-radio-card">
+                  <input type="radio" name="session" value="Evening (5:00 PM - 9:00 PM)">
+                  <div>
+                    <strong>Evening Session</strong>
+                    <span>5:00 PM – 9:00 PM</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="appointmentNotes">Additional Notes / Symptoms (Optional)</label>
+              <textarea id="appointmentNotes" rows="2" placeholder="Briefly describe your symptoms or specific questions..."></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-whatsapp btn-lg" style="width: 100%;">
+                <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+                <span>Send Booking Request via WhatsApp</span>
+              </button>
+
+              <div id="bookingFeedback" class="booking-feedback-msg"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CLINIC LOCATION, MAP & TIMINGS
+       ========================================================================== -->
+  <section class="location-section" id="location">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-tag">Visit Oracare</div>
+        <h2 class="section-title">Find Our Clinic & <span>Visiting Hours</span></h2>
+        <p class="section-subtitle">
+          Conveniently accessible, welcoming ambiance, and sterilized modern operatories designed for patient ease.
+        </p>
+      </div>
+
+      <div class="location-grid">
+        <!-- Clinic Details Card -->
+        <div class="location-info-card">
+          <div>
+            <div class="marathi-text" style="color: var(--primary); font-size: 1.3rem; margin-bottom: 6px;">
+              ओराकेअर दातांचा दवाखाना
+            </div>
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main);">
+              Oracare Dental Clinic
+            </h3>
+            <p style="color: var(--navy); font-weight: 700; margin-top: 4px;">
+              Dr. Pratiksha Barge • Dental Surgeon (MUHS) • Reg No. A-51828
+            </p>
+
+            <div class="info-details-list">
+              <div class="info-item">
+                <div class="info-item-icon">
+                  <i data-lucide="clock"></i>
+                </div>
+                <div class="info-item-text">
+                  <h4>Clinic Hours (Mon – Sat)</h4>
+                  <p>
+                    <strong>Morning Session:</strong> 10:00 AM – 3:00 PM<br>
+                    <strong>Evening Session:</strong> 5:00 PM – 9:00 PM<br>
+                    <span style="color: var(--primary-dark); font-weight: 600;">Sunday: By Prior Appointment / Emergency</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-item-icon">
+                  <i data-lucide="phone"></i>
+                </div>
+                <div class="info-item-text">
+                  <h4>Direct Doctor & Clinic Line</h4>
+                  <p>
+                    <a href="tel:9545058909" style="font-weight: 700; color: var(--primary-dark); font-size: 1.1rem;">+91 9545058909</a>
+                    <br>Available for appointments, queries, and dental emergencies.
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-item-icon">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <div class="info-item-text">
+                  <h4>Clinic Address</h4>
+                  <p style="color: var(--text-main); font-weight: 700; line-height: 1.6; font-size: 0.95rem;">
+                    Shop no. 11, Ground Floor, Shantai Divine Vastu,<br>
+                    Kate Wasti, Punawale, Pimpri-Chinchwad,<br>
+                    Maharashtra – 411033
+                  </p>
+                  <span style="display: inline-block; margin-top: 8px; font-size: 0.8rem; color: var(--primary-dark); font-weight: 700; background: #CCFBF1; padding: 4px 10px; border-radius: 4px;">
+                    📍 Landmark: Shantai Divine Vastu, Kate Wasti
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Amenities Strip -->
+          <div class="facility-amenities-strip">
+            <span class="amenity-chip"><i data-lucide="snowflake" style="width: 14px; height: 14px; color: var(--primary);"></i> Fully Air Conditioned</span>
+            <span class="amenity-chip"><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary);"></i> Multi-stage Sterilization</span>
+            <span class="amenity-chip"><i data-lucide="wifi" style="width: 14px; height: 14px; color: var(--primary);"></i> Free Patient Wi-Fi</span>
+            <span class="amenity-chip"><i data-lucide="car" style="width: 14px; height: 14px; color: var(--primary);"></i> Convenient Parking</span>
+          </div>
+        </div>
+
+        <!-- Google Map & Directions Card -->
+        <div class="map-embed-card">
+          <div class="map-viewport">
+            <!-- Exact Google Maps Embed for Shantai Divine Vastu, Punawale, Pimpri-Chinchwad -->
+            <iframe 
+              src="https://maps.google.com/maps?q=Shantai+Divine+Vastu,+Kate+Wasti,+Punawale,+Pimpri-Chinchwad,+Maharashtra+411033&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              title="Oracare Dental Clinic Location Map - Punawale, Pimpri-Chinchwad"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="map-card-footer">
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--text-main);">Visiting Oracare Clinic?</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Navigate directly via Google Maps GPS</p>
+            </div>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Shop+no.+11,+Ground+Floor,+Shantai+Divine+Vastu,+Kate+Wasti,+Punawale,+Pimpri-Chinchwad,+Maharashtra+411033" target="_blank" class="btn btn-primary btn-sm">
+              <i data-lucide="navigation" style="width: 16px; height: 16px;"></i>
+              <span>Get Directions</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PATIENT REVIEWS & TESTIMONIALS
+       ========================================================================== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-tag navy">Patient Experiences</div>
+        <h2 class="section-title">Trusted by Happy Smiles</h2>
+        <p class="section-subtitle">
+          Read what our patients say about their experience with Dr. Pratiksha Barge at Oracare Dental Clinic.
+        </p>
+      </div>
+
+      <div class="testimonials-slider">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-text">
+              "I was extremely scared of getting a root canal, but Dr. Pratiksha was so reassuring and gentle! The entire procedure was genuinely painless. She explained every step beforehand. Highly recommend Oracare Clinic!"
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">SP</div>
+            <div class="author-details">
+              <strong>Sneha Patil</strong>
+              <span>Root Canal Patient</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-text">
+              "Got my invisible aligners done here. Dr. Pratiksha is very knowledgeable and patient. The clinic is spotless, ultra-hygienic, and modern. My smile has transformed completely in just 6 months!"
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">AK</div>
+            <div class="author-details">
+              <strong>Amit Kulkarni</strong>
+              <span>Clear Aligners Patient</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-stars">
+              ★★★★★
+            </div>
+            <p class="testimonial-text">
+              "Brought my 7-year-old daughter for teeth filling. Dr. Pratiksha has such a wonderful, friendly way with kids. Zero tears, zero fear! The best dental clinic for families."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">PJ</div>
+            <div class="author-details">
+              <strong>Pooja Jadhav</strong>
+              <span>Pediatric Care</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FREQUENTLY ASKED QUESTIONS (ACCORDION)
+       ========================================================================== -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-tag">Got Questions?</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Common questions about procedures, clinic timings, and scheduling consultations at Oracare.
+        </p>
+      </div>
+
+      <div class="faq-wrapper">
+        <!-- FAQ 1 -->
+        <div class="faq-item active">
+          <button class="faq-question">
+            <span>Is Root Canal Treatment (RCT) painful?</span>
+            <span class="faq-toggle-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Not at all! With modern gentle local anesthesia and advanced rotary dental endodontics, a root canal treatment at Oracare Dental Clinic is as painless as getting a normal filling. Our goal is to relieve your toothache, not cause pain.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What are the exact clinic timings for Dr. Pratiksha Barge?</span>
+            <span class="faq-toggle-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Oracare Dental Clinic is open Monday through Saturday with two daily sessions:<br>
+              • <strong>Morning Session:</strong> 10:00 AM to 3:00 PM<br>
+              • <strong>Evening Session:</strong> 5:00 PM to 9:00 PM<br>
+              Sundays are open for emergencies and prior booked appointments by calling <strong>+91 9545058909</strong>.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do invisible clear aligners compare to metal braces?</span>
+            <span class="faq-toggle-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Clear aligners are custom-made, transparent plastic trays that fit snugly over your teeth. They are virtually invisible, removable for eating and brushing, and cause minimal irritation compared to metal wires and brackets. Both options are expertly offered by Dr. Pratiksha.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How long does a dental implant last?</span>
+            <span class="faq-toggle-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              With good oral hygiene, regular brushing, and biannual checkups, titanium dental implants can last a lifetime! They fuse naturally with your jawbone, making them the most durable tooth replacement option available.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How can I book an appointment quickly?</span>
+            <span class="faq-toggle-icon">&plus;</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              You can book in under 30 seconds using the interactive form on this website, which sends your details directly to Dr. Pratiksha Barge on WhatsApp (+91 9545058909), or simply tap the "Call" button to speak directly.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MAIN FOOTER
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand & Creds -->
+        <div class="footer-col footer-about">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <img src="assets/logo.svg" alt="Oracare Logo" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+          </div>
+          <div class="marathi-text" style="color: #2DD4BF; font-size: 1.1rem;">ओराकेअर दातांचा दवाखाना</div>
+          <p>
+            Providing gentle, ethical, and advanced dental healthcare. Dedicated to preserving your natural teeth and creating beautiful, confident smiles.
+          </p>
+          <div class="footer-cred-badge">
+            <i data-lucide="shield-check" style="width: 16px; height: 16px; color: #2DD4BF;"></i>
+            <span>Dr. Pratiksha Barge | Reg. No. A-51828</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Featured Treatments -->
+        <div class="footer-col">
+          <h4>Key Treatments</h4>
+          <div class="footer-links">
+            <a href="#service-rct">Root Canal Treatment</a>
+            <a href="#service-implants">Dental Implants</a>
+            <a href="#service-aligners">Aligners & Braces</a>
+            <a href="#service-smile">Smile Design & Makeovers</a>
+            <a href="#service-crowns">Crowns & Bridges</a>
+            <a href="#services">Teeth Cleaning & Scaling</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Quick Navigation -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About Dr. Pratiksha (MUHS)</a>
+            <a href="#assessment">Symptom Diagnostic Tool</a>
+            <a href="#transformation">Before & After Slider</a>
+            <a href="#appointment">Book Appointment</a>
+            <a href="#location">Clinic Location & Hours</a>
+          </div>
+        </div>
+
+        <!-- Col 4: Contact & Hours -->
+        <div class="footer-col">
+          <h4>Clinic Contact</h4>
+          <div class="footer-contact-items">
+            <div class="footer-contact-item">
+              <i data-lucide="phone"></i>
+              <div>
+                <span style="display: block; color: #FFFFFF; font-weight: 700;">+91 9545058909</span>
+                <span>Call or WhatsApp anytime</span>
+              </div>
+            </div>
+
+            <div class="footer-contact-item">
+              <i data-lucide="clock"></i>
+              <div>
+                <span style="display: block; color: #FFFFFF; font-weight: 700;">10:00 AM – 3:00 PM</span>
+                <span style="display: block; color: #FFFFFF; font-weight: 700;">5:00 PM – 9:00 PM</span>
+                <span>Monday to Saturday</span>
+              </div>
+            </div>
+
+            <div class="footer-contact-item">
+              <i data-lucide="map-pin"></i>
+              <div>
+                <span style="display: block; color: #FFFFFF; font-weight: 700;">Clinic Address</span>
+                <span style="color: #CBD5E1; line-height: 1.5; font-size: 0.84rem; display: block;">
+                  Shop no. 11, Ground Floor, Shantai Divine Vastu,<br>
+                  Kate Wasti, Punawale, Pimpri-Chinchwad,<br>
+                  Maharashtra – 411033
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          © 2026 <strong>Oracare Dental Clinic</strong>. All rights reserved. Directed by <strong>Dr. Pratiksha Barge</strong>, Dental Surgeon (MUHS), Reg No. A-51828.
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <span>Professional Dental Care</span>
+          <span>•</span>
+          <span>Patient-Focused Practice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE FLOATING QUICK ACTION BAR (STICKY BOTTOM DOCK)
+       ========================================================================== -->
+  <div class="mobile-floating-bar">
+    <div class="mobile-bar-actions">
+      <a href="tel:9545058909" class="mobile-bar-btn">
+        <i data-lucide="phone"></i>
+        <span>Call</span>
+      </a>
+
+      <a href="https://wa.me/919545058909?text=Hello%20Dr.%20Pratiksha,%20I%20want%20to%20book%20a%20dental%20appointment." target="_blank" class="mobile-bar-btn whatsapp">
+        <i data-lucide="message-circle"></i>
+        <span>WhatsApp</span>
+      </a>
+
+      <a href="#appointment" class="mobile-bar-btn primary">
+        <i data-lucide="calendar"></i>
+        <span>Book</span>
+      </a>
+
+      <a href="#location" class="mobile-bar-btn">
+        <i data-lucide="map-pin"></i>
+        <span>Locate</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Lucide Icon Initialization with graceful fallback -->
+  <script>
+    if (window.lucide && typeof lucide.createIcons === 'function') {
+      try {
+        lucide.createIcons();
+      } catch (e) {
+        console.warn('Lucide icons loaded with notice:', e);
+      }
+    }
+  </script>
+
+  <!-- Custom Main Script -->
+  <script src="js/main.js"></script>
+</body>
+</html>

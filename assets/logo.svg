@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C9B1"/>
+      <stop offset="100%" stop-color="#008B7D"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00A896" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#2DD4BF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="toothGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#F1FAF8"/>
+      <stop offset="100%" stop-color="#DCF5F0"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#004D40" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Logo Icon Group -->
+  <g transform="translate(10, 8)">
+    <!-- Behind Swoosh arc -->
+    <path d="M 22,88 C 12,70 12,42 26,24 C 40,6 68,2 88,14 C 102,22 108,36 106,50" 
+          fill="none" stroke="url(#ringGrad)" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+
+    <!-- Tooth Core with drop shadow -->
+    <path d="M 38,32 C 34,20 45,14 58,16 C 65,17 68,22 72,22 C 76,22 79,17 86,16 C 99,14 110,20 106,32 C 102,46 98,62 94,84 C 92,94 84,98 78,88 C 74,80 72,66 72,66 C 72,66 70,80 66,88 C 60,98 52,94 50,84 C 46,62 42,46 38,32 Z"
+          fill="url(#toothGrad)" filter="url(#softShadow)" stroke="#0D9488" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Tooth internal highlight -->
+    <path d="M 44,28 C 42,22 48,19 56,20 C 62,21 65,24 72,25 C 70,36 67,48 64,62 C 58,61 52,56 48,46 C 45,40 44,34 44,28 Z"
+          fill="#FFFFFF" opacity="0.8"/>
+
+    <!-- Front Swoosh encircling orbital ring -->
+    <path d="M 12,74 C 16,86 28,98 52,100 C 80,102 106,86 112,68 C 114,62 114,56 112,50" 
+          fill="none" stroke="url(#ringGrad)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Top Sparkle / Star on Tooth -->
+    <g transform="translate(94, 14)">
+      <path d="M 0,-10 Q 0,0 10,0 Q 0,0 0,10 Q 0,0 -10,0 Q 0,0 0,-10 Z" fill="#2DD4BF"/>
+      <circle cx="0" cy="0" r="2.5" fill="#FFFFFF"/>
+    </g>
+    <g transform="translate(104, 28) scale(0.55)">
+      <path d="M 0,-10 Q 0,0 10,0 Q 0,0 0,-10 Z" fill="#00C9B1"/>
+    </g>
+  </g>
+
+  <!-- Typography: ORACARE DENTAL CLINIC -->
+  <g transform="translate(132, 20)">
+    <!-- Primary Brand Title -->
+    <text x="0" y="44" font-family="'Plus Jakarta Sans', 'Montserrat', 'Segoe UI', sans-serif" font-size="42" font-weight="900" fill="#0F766E" letter-spacing="4">ORACARE</text>
+    
+    <!-- Subtitle: DENTAL CLINIC -->
+    <text x="3" y="68" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#1E3A8A" letter-spacing="7.5">DENTAL CLINIC</text>
+
+    <!-- Marathi Regional Script Tag -->
+    <text x="4" y="88" font-family="'Mukta', 'Noto Sans Devanagari', sans-serif" font-size="14.5" font-weight="700" fill="#0D9488" letter-spacing="1">ओराकेअर दातांचा दवाखाना</text>
+  </g>
+</svg>
