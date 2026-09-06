@@ -22,7 +22,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Stylesheet (with cache-buster for mobile browsers) -->
-  <link rel="stylesheet" href="css/styles.css?v=3.2">
+  <link rel="stylesheet" href="css/styles.css?v=4.0">
 </head>
 <body>
 
@@ -83,13 +83,19 @@
 
         <!-- Navigation Action Buttons -->
         <div class="nav-actions">
+          <!-- Language Switcher Toggle Button -->
+          <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Switch Language / भाषा बदला" title="Switch Language">
+            <i data-lucide="globe" style="width: 15px; height: 15px;"></i>
+            <span class="lang-label" id="langLabel">मराठी</span>
+          </button>
+
           <a href="tel:9545058909" class="btn btn-secondary btn-sm nav-desktop-only" title="Call Clinic">
             <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
-            <span>Call</span>
+            <span data-i18n="nav_call">Call</span>
           </a>
           <a href="#appointment" class="btn btn-primary btn-sm nav-desktop-only">
             <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
-            <span>Book Appointment</span>
+            <span data-i18n="nav_book">Book Appointment</span>
           </a>
 
           <!-- Hamburger for Mobile -->
@@ -106,17 +112,25 @@
     <div class="drawer-content">
       <div class="drawer-header">
         <div class="marathi-text" style="color: var(--primary); font-size: 1.1rem;">ओराकेअर दातांचा दवाखाना</div>
-        <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button class="lang-toggle-btn sm" id="drawerLangToggleBtn" aria-label="Switch Language">
+            <span id="drawerLangLabel">मराठी</span>
+          </button>
+          <button class="drawer-close" id="drawerClose" aria-label="Close menu">&times;</button>
+        </div>
       </div>
       <div class="drawer-nav">
-        <a href="#home" class="drawer-link">Home</a>
-        <a href="#services" class="drawer-link">Featured Treatments</a>
-        <a href="#assessment" class="drawer-link">Smart Symptom Checker</a>
-        <a href="#about" class="drawer-link">About Dr. Pratiksha</a>
-        <a href="#transformation" class="drawer-link">Smile Transformation</a>
-        <a href="#appointment" class="drawer-link">Book Appointment</a>
-        <a href="#location" class="drawer-link">Location & Timings</a>
-        <a href="#faq" class="drawer-link">Patient FAQs</a>
+        <a href="#home" class="drawer-link" data-i18n="nav_home">Home</a>
+        <a href="#services" class="drawer-link" data-i18n="nav_services">Featured Treatments</a>
+        <a href="#assessment" class="drawer-link" data-i18n="nav_symptoms">Smart Symptom Checker</a>
+        <a href="#about" class="drawer-link" data-i18n="nav_doctor">About Dr. Pratiksha</a>
+        <a href="#transformation" class="drawer-link" data-i18n="nav_gallery">Smile Transformation</a>
+        <a href="#appointment" class="drawer-link" data-i18n="nav_appointment">Book Appointment</a>
+        <a href="#location" class="drawer-link" data-i18n="nav_location">Location & Timings</a>
+        <a href="#faq" class="drawer-link" data-i18n="nav_faq">Patient FAQs</a>
+        <a href="javascript:void(0)" class="drawer-link highlight-brush" id="drawerBrushTimerLink">
+          🪥 <span data-i18n="drawer_brush">2-Min Toothbrushing Coach</span>
+        </a>
       </div>
       <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
         <a href="tel:9545058909" class="btn btn-primary" style="width: 100%;">
@@ -186,16 +200,20 @@
           <div class="hero-cta-group">
             <a href="#appointment" class="btn btn-primary btn-lg">
               <i data-lucide="calendar-check" style="width: 20px; height: 20px;"></i>
-              <span>Book Consultation</span>
+              <span data-i18n="hero_book">Book Consultation</span>
             </a>
             <a href="https://wa.me/919545058909?text=Hi%20Dr.%20Pratiksha,%20I%20would%20like%20to%20inquire%20about%20dental%20treatment%20at%20Oracare%20Clinic." target="_blank" class="btn btn-whatsapp btn-lg">
               <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
-              <span>WhatsApp Us</span>
+              <span data-i18n="hero_whatsapp">WhatsApp Us</span>
             </a>
             <a href="tel:9545058909" class="btn btn-secondary btn-lg">
               <i data-lucide="phone-outgoing" style="width: 20px; height: 20px;"></i>
-              <span>Call 9545058909</span>
+              <span data-i18n="hero_call">Call 9545058909</span>
             </a>
+            <button type="button" class="btn btn-brush-hero" id="heroBrushCoachBtn">
+              <span>🪥</span>
+              <span data-i18n="hero_brush_btn">Try 2-Min Brushing Coach</span>
+            </button>
           </div>
 
           <!-- Trust Metrics -->
@@ -924,14 +942,52 @@
               allowfullscreen>
             </iframe>
           </div>
+          <!-- Live Distance & Directions Calculator Widget -->
+          <div class="distance-calculator-box" id="distanceCalcBox">
+            <div class="dist-calc-header">
+              <div class="dist-icon-wrap">
+                <i data-lucide="navigation" style="width: 18px; height: 18px; color: var(--primary);"></i>
+              </div>
+              <div class="dist-calc-text">
+                <strong data-i18n="dist_title">How far are you from Oracare?</strong>
+                <p data-i18n="dist_sub">Find live distance & driving time from your current location.</p>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <button type="button" class="btn btn-primary btn-sm" id="calcDistanceBtn" style="width: 100%;">
+              <i data-lucide="crosshair" style="width: 16px; height: 16px;"></i>
+              <span data-i18n="dist_btn">Calculate Distance & Drive Time</span>
+            </button>
+
+            <!-- Result Display (Hidden initially) -->
+            <div class="dist-result-panel" id="distResultPanel" style="display: none;">
+              <div class="dist-metrics-row">
+                <div class="dist-metric-badge">
+                  <span class="dist-label" data-i18n="dist_lbl">Distance</span>
+                  <strong class="dist-val" id="distVal">-- km</strong>
+                </div>
+                <div class="dist-metric-badge time">
+                  <span class="dist-label" data-i18n="dist_time_lbl">Est. Drive Time</span>
+                  <strong class="dist-val" id="timeVal">-- mins</strong>
+                </div>
+              </div>
+              <p class="dist-note" id="distNote">📍 Punawale, Pimpri-Chinchwad • Easy access via Mumbai-Pune Bypass</p>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Shop+no.+11,+Ground+Floor,+Shantai+Divine+Vastu,+Kate+Wasti,+Punawale,+Pimpri-Chinchwad,+Maharashtra+411033" target="_blank" class="btn btn-whatsapp btn-sm" style="width: 100%; justify-content: center;">
+                <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                <span data-i18n="dist_nav_btn">Start GPS Navigation to Clinic</span>
+              </a>
+            </div>
+          </div>
+
           <div class="map-card-footer">
             <div>
-              <strong style="font-size: 0.95rem; color: var(--text-main);">Visiting Oracare Clinic?</strong>
-              <p style="font-size: 0.8rem; color: var(--text-muted);">Navigate directly via Google Maps GPS</p>
+              <strong style="font-size: 0.95rem; color: var(--text-main);" data-i18n="visit_title">Visiting Oracare Clinic?</strong>
+              <p style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="visit_sub">Navigate directly via Google Maps GPS</p>
             </div>
             <a href="https://www.google.com/maps/dir/?api=1&destination=Shop+no.+11,+Ground+Floor,+Shantai+Divine+Vastu,+Kate+Wasti,+Punawale,+Pimpri-Chinchwad,+Maharashtra+411033" target="_blank" class="btn btn-primary btn-sm">
               <i data-lucide="navigation" style="width: 16px; height: 16px;"></i>
-              <span>Get Directions</span>
+              <span data-i18n="get_directions_btn">Get Directions</span>
             </a>
           </div>
         </div>
@@ -1099,6 +1155,35 @@
   </section>
 
   <!-- ==========================================================================
+       INTERACTIVE FEATURE: 2-MINUTE KIDS & FAMILY TOOTHBRUSHING COACH
+       ========================================================================== -->
+  <section class="brush-coach-section" id="brush-coach">
+    <div class="container">
+      <div class="brush-coach-banner">
+        <div class="brush-banner-content">
+          <div class="section-tag" style="background: rgba(255,255,255,0.2); color: #FFFFFF;" data-i18n="brush_tag">Kids & Family Interactive Routine</div>
+          <h2 class="brush-banner-title" data-i18n="brush_banner_title">Master Your 2-Minute Toothbrushing Routine! 🪥✨</h2>
+          <p class="brush-banner-sub" data-i18n="brush_banner_sub">
+            Did you know 85% of people brush for less than 45 seconds? Use Dr. Pratiksha's 4-quadrant interactive brushing timer at home with gentle audio chimes to protect your family's enamel and gums.
+          </p>
+          <div class="brush-banner-features">
+            <span class="brush-feat-pill">⏱️ 4 × 30s Quadrants</span>
+            <span class="brush-feat-pill">🔔 Gentle Chimes</span>
+            <span class="brush-feat-pill">⭐ Fun Rewards</span>
+          </div>
+        </div>
+        <div class="brush-banner-action">
+          <button type="button" class="btn btn-brush-start" id="openBrushCoachBtn">
+            <i data-lucide="play-circle" style="width: 22px; height: 22px;"></i>
+            <span data-i18n="brush_btn_start">Start Brushing Coach Now</span>
+          </button>
+          <span class="brush-hint-text" data-i18n="brush_hint">Kid-friendly • Works on phone while brushing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        MAIN FOOTER
        ========================================================================== -->
   <footer class="main-footer">
@@ -1219,6 +1304,203 @@
         <i data-lucide="map-pin"></i>
         <span>Locate</span>
       </a>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       STICKY FLOATING GOOGLE RATING BADGE
+       ========================================================================== -->
+  <div class="sticky-review-badge" id="stickyReviewBadge">
+    <div class="google-badge-pill" id="openReviewModalBtn">
+      <div class="google-g-icon">
+        <svg viewBox="0 0 24 24" width="16" height="16">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+      </div>
+      <div class="google-rating-score">
+        <strong>4.9</strong>
+        <span class="star-rating-stars">★★★★★</span>
+      </div>
+      <span class="google-review-count">(120+ Reviews)</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       GOOGLE REVIEWS MODAL CAROUSEL
+       ========================================================================== -->
+  <div class="modal-overlay" id="reviewsModal">
+    <div class="modal-container review-modal-container">
+      <div class="modal-header">
+        <div class="review-modal-title">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.3rem;">⭐</span>
+            <h3 data-i18n="reviews_modal_title">Google Patient Reviews</h3>
+          </div>
+          <span class="review-rating-summary">4.9 / 5.0 Rating • Oracare Dental Clinic</span>
+        </div>
+        <button class="modal-close-btn" id="closeReviewsModalBtn" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="reviews-carousel-wrapper">
+          <div class="modal-review-card">
+            <div class="review-stars-row">
+              <span class="stars">★★★★★</span>
+              <span class="verified-badge">✓ Google Verified Patient</span>
+            </div>
+            <p class="review-quote">"Dr. Pratiksha Barge is exceptionally gentle. I got two root canals done here and never felt an ounce of pain. The clinic is spotless and uses the latest digital equipment."</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">SP</div>
+              <div>
+                <strong>Sneha Patil</strong>
+                <small>Local Resident • 2 weeks ago</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-review-card">
+            <div class="review-stars-row">
+              <span class="stars">★★★★★</span>
+              <span class="verified-badge">✓ Google Verified Patient</span>
+            </div>
+            <p class="review-quote">"Best dentist in Punawale / Pimpri-Chinchwad area! Completed my invisible aligners with Dr. Pratiksha. The entire team is courteous and transparent with pricing."</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">AK</div>
+              <div>
+                <strong>Amit Kulkarni</strong>
+                <small>Clear Aligners • 1 month ago</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-review-card">
+            <div class="review-stars-row">
+              <span class="stars">★★★★★</span>
+              <span class="verified-badge">✓ Google Verified Patient</span>
+            </div>
+            <p class="review-quote">"Visited with my 7-year-old daughter. The doctor's patience and friendliness completely cured my daughter's fear of dentists! Outstanding family dental care."</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">PJ</div>
+              <div>
+                <strong>Pooja Jadhav</strong>
+                <small>Family Dental Care • 3 months ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-modal-actions">
+          <a href="https://maps.google.com/maps?q=Shantai+Divine+Vastu,+Kate+Wasti,+Punawale,+Pimpri-Chinchwad,+Maharashtra+411033" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+            <span data-i18n="leave_review_btn">View / Write a Review on Google Maps</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       INTERACTIVE 2-MINUTE TOOTHBRUSHING COACH & QUADRANT TIMER MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="brushCoachModal">
+    <div class="modal-container brush-modal-container">
+      <div class="modal-header brush-header">
+        <div class="brush-title-wrap">
+          <span style="font-size: 1.5rem;">🪥</span>
+          <div>
+            <h3 data-i18n="coach_modal_title">2-Minute Toothbrushing Coach</h3>
+            <span class="coach-sub-badge" data-i18n="coach_badge">Dr. Pratiksha's 4-Quadrant Routine</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeBrushCoachBtn" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="modal-body brush-body">
+        <!-- Quadrant Progress Indicators -->
+        <div class="quadrant-indicators-row">
+          <div class="quad-step active" id="quadStep1" data-quad="1">
+            <span>Q1</span>
+            <small data-i18n="q1_name">Upper Right</small>
+          </div>
+          <div class="quad-step" id="quadStep2" data-quad="2">
+            <span>Q2</span>
+            <small data-i18n="q2_name">Upper Left</small>
+          </div>
+          <div class="quad-step" id="quadStep3" data-quad="3">
+            <span>Q3</span>
+            <small data-i18n="q3_name">Lower Left</small>
+          </div>
+          <div class="quad-step" id="quadStep4" data-quad="4">
+            <span>Q4</span>
+            <small data-i18n="q4_name">Lower Right</small>
+          </div>
+        </div>
+
+        <!-- Interactive Visual Ring & Timer -->
+        <div class="brush-timer-center">
+          <div class="circular-timer-wrap">
+            <svg class="timer-svg" viewBox="0 0 200 200" width="190" height="190">
+              <circle class="timer-bg-circle" cx="100" cy="100" r="86"></circle>
+              <circle class="timer-progress-circle" id="timerProgressCircle" cx="100" cy="100" r="86"></circle>
+            </svg>
+            <div class="timer-display-inner">
+              <span class="timer-seconds" id="quadrantSeconds">30</span>
+              <span class="timer-label" data-i18n="seconds_left">seconds left</span>
+              <span class="total-timer" id="totalTimeDisplay">Total: 2:00</span>
+            </div>
+          </div>
+
+          <!-- Quadrant Visual Tooth Diagram -->
+          <div class="quadrant-diagram-card">
+            <div class="mouth-diagram" id="mouthDiagram">
+              <div class="mouth-quad top-right active" id="mouthQ1">
+                <span>Top Right (बाहेर व चावण्याचा भाग)</span>
+              </div>
+              <div class="mouth-quad top-left" id="mouthQ2">
+                <span>Top Left (वरचा डावा भाग)</span>
+              </div>
+              <div class="mouth-quad bottom-left" id="mouthQ3">
+                <span>Bottom Left (खालचा डावा भाग)</span>
+              </div>
+              <div class="mouth-quad bottom-right" id="mouthQ4">
+                <span>Bottom Right (खालचा उजवा भाग)</span>
+              </div>
+            </div>
+            <div class="brush-instruction-box">
+              <strong id="brushActionTitle">Brush Upper Right Quadrant</strong>
+              <p id="brushActionTip">Use small gentle circular strokes at a 45° angle towards gumline.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timer Controls -->
+        <div class="brush-controls-row">
+          <button type="button" class="btn btn-primary btn-lg" id="timerPlayPauseBtn" style="flex: 1;">
+            <i data-lucide="play" id="playPauseIcon" style="width: 20px; height: 20px;"></i>
+            <span id="playPauseText" data-i18n="timer_start">Start Brushing</span>
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg" id="timerResetBtn" title="Reset Timer">
+            <i data-lucide="rotate-ccw" style="width: 20px; height: 20px;"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg" id="timerAudioToggleBtn" title="Mute/Unmute Audio Chimes">
+            <i data-lucide="volume-2" id="audioToggleIcon" style="width: 20px; height: 20px;"></i>
+          </button>
+        </div>
+
+        <!-- Completion Celebration Banner (Hidden initially) -->
+        <div class="brush-celebration-panel" id="brushCelebrationPanel" style="display: none;">
+          <div class="celeb-stars">✨ 🦷 🌟 🪥 ✨</div>
+          <h4 data-i18n="celeb_title">Sparkling Clean Smile! Great Job!</h4>
+          <p data-i18n="celeb_msg">You completed the full 2-minute dentist-recommended routine. Do this twice daily for cavity-free teeth!</p>
+          <div style="display: flex; gap: 10px; justify-content: center; margin-top: 14px;">
+            <button type="button" class="btn btn-secondary btn-sm" id="restartBrushBtn" data-i18n="brush_again">Brush Again</button>
+            <a href="#appointment" class="btn btn-primary btn-sm" id="bookAfterBrushBtn" data-i18n="brush_book">Book Clean-up Checkup</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

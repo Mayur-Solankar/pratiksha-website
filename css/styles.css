@@ -3175,3 +3175,764 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
     min-width: 0 !important;
   }
 }
+/* ==========================================================================
+   INTERACTIVE FEATURES STYLES (4 NEW MODULES)
+   1. Language Switcher  2. Distance Calc  3. Sticky Google Review  4. Toothbrush Coach
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LANGUAGE SWITCHER TOGGLE BUTTON
+   -------------------------------------------------------------------------- */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F0FDFA;
+  border: 1.5px solid var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 38px;
+}
+
+.lang-toggle-btn:hover {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+}
+
+.lang-toggle-btn.sm {
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  min-height: 32px;
+}
+
+.highlight-brush {
+  color: var(--primary) !important;
+  background: #F0FDFA;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. LIVE DISTANCE & DIRECTIONS CALCULATOR WIDGET
+   -------------------------------------------------------------------------- */
+.distance-calculator-box {
+  background: #FFFFFF;
+  border: 1.5px solid #CCFBF1;
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  margin-top: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.dist-calc-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dist-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #F0FDFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dist-calc-text strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+
+.dist-calc-text p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.dist-result-panel {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-subtle);
+  animation: fadeIn 0.3s ease;
+}
+
+.dist-metrics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dist-metric-badge {
+  background: #F8FAFC;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.dist-metric-badge.time {
+  background: #F0FDFA;
+  border-color: #CCFBF1;
+}
+
+.dist-metric-badge .dist-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.dist-metric-badge .dist-val {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+.dist-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   3. STICKY FLOATING GOOGLE RATING BADGE
+   -------------------------------------------------------------------------- */
+.sticky-review-badge {
+  position: fixed;
+  left: 20px;
+  bottom: 80px;
+  z-index: 95;
+}
+
+.google-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-full);
+  padding: 7px 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.google-badge-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  border-color: #4285F4;
+}
+
+.google-rating-score {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.google-rating-score strong {
+  font-size: 0.95rem;
+  color: #1F2937;
+  font-weight: 800;
+}
+
+.star-rating-stars {
+  color: #F59E0B;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.google-review-count {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Modal Windows (Generic) */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.modal-overlay.open {
+  display: flex;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-container {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+  color: var(--text-main);
+}
+
+.modal-body {
+  padding: 22px;
+}
+
+/* Reviews Modal Styles */
+.review-rating-summary {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.reviews-carousel-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.modal-review-card {
+  background: #F8FAFC;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.review-stars-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.review-stars-row .stars {
+  color: #F59E0B;
+  font-size: 0.95rem;
+}
+
+.verified-badge {
+  font-size: 0.7rem;
+  color: #16A34A;
+  font-weight: 700;
+  background: #DCFCE7;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.review-quote {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.reviewer-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewer-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-100);
+  color: var(--primary-dark);
+  font-weight: 800;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviewer-meta strong {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--text-main);
+}
+
+.reviewer-meta small {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   4. TOOTHBRUSHING COACH BANNER & MODAL
+   -------------------------------------------------------------------------- */
+.brush-coach-section {
+  padding: 40px 0;
+  background: #FFFFFF;
+}
+
+.brush-coach-banner {
+  background: linear-gradient(135deg, #0D9488 0%, #1E3A8A 100%);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.brush-banner-content {
+  max-width: 620px;
+}
+
+.brush-banner-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.brush-banner-sub {
+  font-size: 0.95rem;
+  color: #E2E8F0;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.brush-banner-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.brush-feat-pill {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.brush-banner-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-brush-start {
+  background: #FACC15;
+  color: #1E293B;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 16px 28px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 25px rgba(250, 204, 21, 0.4);
+  transition: all 0.25s ease;
+}
+
+.btn-brush-start:hover {
+  background: #F59E0B;
+  transform: translateY(-2px);
+  color: #000000;
+}
+
+.brush-hint-text {
+  font-size: 0.74rem;
+  color: #CCFBF1;
+}
+
+.btn-brush-hero {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1.5px solid #FCD34D;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+}
+
+.btn-brush-hero:hover {
+  background: #FDE68A;
+  transform: translateY(-2px);
+}
+
+/* Brush Timer Modal */
+.brush-modal-container {
+  max-width: 480px;
+  text-align: center;
+}
+
+.coach-sub-badge {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 700;
+  display: block;
+  margin-top: 2px;
+}
+
+.quadrant-indicators-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.quad-step {
+  background: #F1F5F9;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 8px 4px;
+  transition: all 0.3s ease;
+}
+
+.quad-step span {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #64748B;
+}
+
+.quad-step small {
+  display: block;
+  font-size: 0.65rem;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.quad-step.active {
+  background: #F0FDFA;
+  border-color: var(--primary);
+}
+
+.quad-step.active span {
+  color: var(--primary-dark);
+}
+
+.quad-step.active small {
+  color: var(--primary-dark);
+}
+
+.quad-step.completed {
+  background: #ECFDF5;
+  border-color: #10B981;
+}
+
+.quad-step.completed span {
+  color: #10B981;
+}
+
+/* Circular Timer */
+.circular-timer-wrap {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 18px auto;
+}
+
+.timer-svg {
+  transform: rotate(-90deg);
+}
+
+.timer-bg-circle {
+  fill: none;
+  stroke: #E2E8F0;
+  stroke-width: 12;
+}
+
+.timer-progress-circle {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 540;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.8s linear, stroke 0.3s ease;
+}
+
+.timer-display-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-seconds {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.timer-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.total-timer {
+  font-size: 0.74rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Mouth Diagram */
+.quadrant-diagram-card {
+  background: #F8FAFC;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.mouth-diagram {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.mouth-quad {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: var(--radius-sm);
+  padding: 10px 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748B;
+  transition: all 0.3s ease;
+}
+
+.mouth-quad.active {
+  background: #CCFBF1;
+  border-color: var(--primary);
+  color: var(--primary-darker);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.18);
+}
+
+.brush-instruction-box strong {
+  display: block;
+  font-size: 0.96rem;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.brush-instruction-box p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.brush-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.brush-celebration-panel {
+  background: #F0FDFA;
+  border: 1.5px solid #2DD4BF;
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  margin-top: 18px;
+  animation: fadeIn 0.4s ease;
+}
+
+.celeb-stars {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.brush-celebration-panel h4 {
+  font-size: 1.15rem;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+
+.brush-celebration-panel p {
+  font-size: 0.82rem;
+  color: #334155;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS FOR NEW FEATURES (Mobile <= 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .sticky-review-badge {
+    left: 12px;
+    bottom: 74px;
+  }
+
+  .google-badge-pill {
+    padding: 6px 11px;
+    gap: 6px;
+  }
+
+  .google-review-count {
+    display: none;
+  }
+
+  .brush-coach-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 18px;
+    gap: 20px;
+  }
+
+  .brush-banner-features {
+    justify-content: center;
+  }
+
+  .btn-brush-start {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modal-container {
+    max-height: 85vh;
+    padding: 0;
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .circular-timer-wrap {
+    width: 160px;
+    height: 160px;
+  }
+
+  .timer-svg {
+    width: 160px;
+    height: 160px;
+  }
+
+  .timer-seconds {
+    font-size: 2.6rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ensure modal containers on mobile take 100% of the screen nicely */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 12px !important;
+  }
+
+  .modal-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 90vh !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .quadrant-indicators-row {
+    gap: 4px !important;
+  }
+
+  .quad-step {
+    padding: 6px 2px !important;
+  }
+
+  .quad-step span {
+    font-size: 0.78rem !important;
+  }
+
+  .quad-step small {
+    font-size: 0.6rem !important;
+  }
+
+  .mouth-diagram {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .mouth-quad span {
+    font-size: 0.68rem !important;
+  }
+
+  .brush-controls-row .btn {
+    padding: 12px 14px !important;
+  }
+}
