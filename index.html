@@ -73,6 +73,7 @@
         <!-- Desktop Navigation Links -->
         <ul class="nav-menu">
           <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#tooth-journey" class="nav-link" data-i18n="nav_journey">Tooth Journey</a></li>
           <li><a href="#services" class="nav-link">Treatments</a></li>
           <li><a href="#assessment" class="nav-link">Symptom Checker</a></li>
           <li><a href="#about" class="nav-link">Dr. Pratiksha</a></li>
@@ -121,6 +122,7 @@
       </div>
       <div class="drawer-nav">
         <a href="#home" class="drawer-link" data-i18n="nav_home">Home</a>
+        <a href="#tooth-journey" class="drawer-link" data-i18n="nav_journey">Tooth Journey ✨</a>
         <a href="#services" class="drawer-link" data-i18n="nav_services">Featured Treatments</a>
         <a href="#assessment" class="drawer-link" data-i18n="nav_symptoms">Smart Symptom Checker</a>
         <a href="#about" class="drawer-link" data-i18n="nav_doctor">About Dr. Pratiksha</a>
@@ -290,6 +292,245 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       APPLE-STYLE INTERACTIVE TOOTH SCROLL JOURNEY (PINNED SCROLLYTELLING)
+       ========================================================================== -->
+  <section class="apple-tooth-section" id="tooth-journey">
+    <!-- Ambient Studio Background Glows -->
+    <div class="apple-glow-orb apple-glow-teal"></div>
+    <div class="apple-glow-orb apple-glow-blue"></div>
+
+    <div class="container apple-journey-container">
+      
+      <!-- Section Header -->
+      <div class="apple-journey-header">
+        <div class="apple-badge">
+          <span class="apple-badge-sparkle">✨</span>
+          <span data-i18n="journey_badge">Interactive Dental Engineering</span>
+        </div>
+        <h2 class="apple-journey-title" data-i18n="journey_title">
+          The Anatomy of a <span class="text-gradient-teal">Healthy Smile</span>
+        </h2>
+        <p class="apple-journey-subtitle" data-i18n="journey_subtitle">
+          Watch the tooth transform as you scroll down through Dr. Pratiksha's gentle, advanced dental care milestones.
+        </p>
+      </div>
+
+      <!-- Central Spine & Traveling Tooth Layout -->
+      <div class="apple-timeline-wrapper" id="appleTimeline">
+        
+        <!-- Center Neon Spine Track -->
+        <div class="timeline-center-spine">
+          <div class="spine-line-track"></div>
+          <div class="spine-line-fill" id="spineLineFill"></div>
+        </div>
+
+        <!-- Traveling Floating Tooth in the Middle -->
+        <div class="apple-tooth-traveler" id="toothTraveler">
+          <div class="apple-tooth-perspective-wrapper" id="appleTooth3D">
+            
+            <!-- Radiance Halo Ring (Stage 4 highlight) -->
+            <div class="tooth-aura-ring" id="toothAuraRing"></div>
+
+            <!-- Dynamic Sparkle Particles -->
+            <div class="tooth-sparkle-burst" id="toothSparkles">
+              <span class="sparkle-star s1">✦</span>
+              <span class="sparkle-star s2">★</span>
+              <span class="sparkle-star s3">✦</span>
+              <span class="sparkle-star s4">✧</span>
+            </div>
+
+            <!-- High-Res Multi-Layer Vector Tooth Artwork -->
+            <svg class="apple-tooth-svg" viewBox="0 0 340 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="enamelGrad" cx="35%" cy="30%" r="75%">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="45%" stop-color="#F1FAF8"/>
+                  <stop offset="85%" stop-color="#D5F2EB"/>
+                  <stop offset="100%" stop-color="#A7E4D8"/>
+                </radialGradient>
+                <radialGradient id="dentinGrad" cx="40%" cy="35%" r="70%">
+                  <stop offset="0%" stop-color="#FFFBEB"/>
+                  <stop offset="70%" stop-color="#FED7AA"/>
+                  <stop offset="100%" stop-color="#FDBA74"/>
+                </radialGradient>
+                <linearGradient id="pulpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF6B6B"/>
+                  <stop offset="50%" stop-color="#E11D48"/>
+                  <stop offset="100%" stop-color="#881337"/>
+                </linearGradient>
+                <linearGradient id="healingBeam" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.95"/>
+                  <stop offset="100%" stop-color="#0284C7" stop-opacity="0.2"/>
+                </linearGradient>
+                <linearGradient id="crownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F0F9FF" stop-opacity="0.98"/>
+                  <stop offset="45%" stop-color="#BAE6FD" stop-opacity="0.92"/>
+                  <stop offset="100%" stop-color="#0284C7" stop-opacity="0.95"/>
+                </linearGradient>
+                <filter id="tooth3DShadow" x="-25%" y="-20%" width="150%" height="150%">
+                  <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#0D9488" flood-opacity="0.25"/>
+                  <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.2"/>
+                </filter>
+                <filter id="crownGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#38BDF8" flood-opacity="0.6"/>
+                </filter>
+                <filter id="pulpGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#F43F5E" flood-opacity="0.7"/>
+                </filter>
+              </defs>
+
+              <!-- Layer 1: Ground Ambient Reflection Shadow -->
+              <ellipse cx="170" cy="370" rx="90" ry="14" fill="#0D9488" opacity="0.2" class="tooth-ground-shadow"/>
+
+              <!-- Layer 2: Main Outer Enamel Structure -->
+              <g class="tooth-layer tooth-enamel-group" id="toothEnamelLayer">
+                <path d="M 85,110 C 72,60 110,38 145,44 C 160,47 165,56 170,56 C 175,56 180,47 195,44 C 230,38 268,60 255,110 C 242,160 232,210 224,285 C 218,335 198,348 185,315 C 178,295 174,250 170,250 C 166,250 162,295 155,315 C 142,348 122,335 116,285 C 108,210 98,160 85,110 Z"
+                      fill="url(#enamelGrad)"
+                      stroke="#0F766E"
+                      stroke-width="2.5"
+                      stroke-linejoin="round"
+                      filter="url(#tooth3DShadow)"/>
+                <path d="M 100,95 C 92,68 118,52 142,56 C 148,58 152,62 168,64 C 162,88 156,120 152,160 C 136,158 120,146 112,126 C 104,108 102,100 100,95 Z"
+                      fill="#FFFFFF"
+                      opacity="0.85"/>
+                <path d="M 230,85 C 236,105 230,135 224,165 C 220,165 212,160 216,130 C 220,100 228,88 230,85 Z"
+                      fill="#FFFFFF"
+                      opacity="0.5"/>
+              </g>
+
+              <!-- Layer 3: Internal Dentin & Pulp Chamber (Stage 2) -->
+              <g class="tooth-layer tooth-internal-group" id="toothInternalLayer" opacity="0">
+                <path d="M 105,125 C 98,90 125,75 150,78 C 160,80 166,85 170,85 C 174,85 180,80 190,78 C 215,75 242,90 235,125 C 226,165 218,205 212,265 C 208,300 195,308 186,285 C 180,270 176,235 170,235 C 164,235 160,270 154,285 C 145,308 132,300 128,265 C 122,205 114,165 105,125 Z"
+                      fill="url(#dentinGrad)"
+                      stroke="#F59E0B"
+                      stroke-width="1.8"
+                      stroke-dasharray="4 3"/>
+                <path d="M 140,135 C 136,115 152,105 168,107 C 172,107 176,107 180,107 C 196,105 204,115 200,135 C 196,155 190,175 190,205 C 190,235 192,260 188,272 C 185,268 183,248 182,230 C 180,210 174,185 170,185 C 166,185 160,210 158,230 C 157,248 155,268 152,272 C 148,260 150,235 150,205 C 150,175 144,155 140,135 Z"
+                      fill="url(#pulpGrad)"
+                      filter="url(#pulpGlow)"/>
+                <line x1="170" y1="20" x2="170" y2="220" stroke="url(#healingBeam)" stroke-width="4" stroke-linecap="round" class="rct-laser-beam"/>
+                <circle cx="170" cy="160" r="12" fill="#2DD4BF" opacity="0.7" class="rct-pulse-point"/>
+              </g>
+
+              <!-- Layer 4: Precision Zirconia Crown Cap (Stage 3) -->
+              <g class="tooth-layer tooth-crown-group" id="toothCrownLayer" transform="translate(0, -60)" opacity="0">
+                <path d="M 80,105 C 68,52 108,30 145,36 C 160,39 165,48 170,48 C 175,48 180,39 195,36 C 232,30 272,52 260,105 C 250,148 240,185 235,200 C 218,206 188,208 170,208 C 152,208 122,206 105,200 C 100,185 90,148 80,105 Z"
+                      fill="url(#crownGrad)"
+                      stroke="#0284C7"
+                      stroke-width="2.5"
+                      filter="url(#crownGlow)"/>
+                <path d="M 102,198 Q 170,212 238,198" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 130,55 Q 170,68 210,55 M 115,100 Q 170,120 225,100 M 108,150 Q 170,172 232,150"
+                      fill="none"
+                      stroke="#FFFFFF"
+                      stroke-width="1"
+                      stroke-dasharray="2 3"
+                      opacity="0.75"/>
+                <path d="M 96,90 C 90,62 115,46 140,50 C 146,51 150,55 166,57 C 160,80 152,112 148,150 C 132,148 116,138 108,118 Z"
+                      fill="#FFFFFF"
+                      opacity="0.85"/>
+              </g>
+
+              <!-- Layer 5: Orbital Cleansing Ring -->
+              <ellipse cx="170" cy="150" rx="140" ry="42" fill="none" stroke="#2DD4BF" stroke-width="3.5" stroke-dasharray="14 10" opacity="0.85" class="tooth-orbit-ring" id="toothOrbitRing"/>
+              <ellipse cx="170" cy="150" rx="140" ry="42" fill="none" stroke="#00C9B1" stroke-width="1.5" opacity="0.4" class="tooth-orbit-ring-glow"/>
+
+              <!-- Sparkle Star on Crown -->
+              <g transform="translate(236, 68)" class="tooth-corner-star" id="toothSparklePoint">
+                <path d="M 0,-12 Q 0,0 12,0 Q 0,0 0,12 Q 0,0 -12,0 Q 0,0 0,-12 Z" fill="#2DD4BF"/>
+                <circle cx="0" cy="0" r="3" fill="#FFFFFF"/>
+              </g>
+            </svg>
+
+            <!-- Live Status Pill Tag -->
+            <div class="tooth-status-pill" id="toothStatusPill">
+              <span class="pill-dot"></span>
+              <span class="pill-text" id="toothStatusText">Stage 1: Enamel Protection</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Milestone Row 1: Left Side -->
+        <div class="timeline-row row-left active" data-step-row="0">
+          <div class="timeline-node-dot">01</div>
+          <div class="timeline-card">
+            <div class="story-step-badge">Stage 01 • Prevention</div>
+            <h3 class="story-title" data-i18n="journey_c1_title">Enamel Defense & Deep Hygiene</h3>
+            <div class="story-marathi marathi-text" data-i18n="journey_c1_mr">दातांचे नैसर्गिक इनॅमल संरक्षण व स्वच्छता</div>
+            <p class="story-desc" data-i18n="journey_c1_desc">
+              Your natural enamel is harder than bone, but vulnerable to micro-acid attacks. With <strong>ultrasonic scaling</strong> and protective fluoridation, Dr. Pratiksha removes calcified tartar without scraping or weakening natural tooth enamel.
+            </p>
+            <div class="story-features-list">
+              <div class="feature-item"><i data-lucide="shield"></i> <span>Zero Enamel Thinning</span></div>
+              <div class="feature-item"><i data-lucide="sparkles"></i> <span>Ultrasonic Plaque Elimination</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone Row 2: Right Side -->
+        <div class="timeline-row row-right" data-step-row="1">
+          <div class="timeline-node-dot">02</div>
+          <div class="timeline-card">
+            <div class="story-step-badge">Stage 02 • Root Restoration</div>
+            <h3 class="story-title" data-i18n="journey_c2_title">Painless Rotary Root Canal</h3>
+            <div class="story-marathi marathi-text" data-i18n="journey_c2_mr">वेदनामुक्त रोटरी रूट कॅनल उपचार</div>
+            <p class="story-desc" data-i18n="journey_c2_desc">
+              When decay reaches the internal nerve pulp, extraction isn't necessary. Using <strong>German endodontic rotary motors</strong> and apex locators, Dr. Pratiksha gently cleans the root canal system in just 1–2 comfortable sessions.
+            </p>
+            <div class="story-features-list">
+              <div class="feature-item"><i data-lucide="check-circle-2"></i> <span>Preserves 100% of Natural Tooth Root</span></div>
+              <div class="feature-item"><i data-lucide="heart-pulse"></i> <span>Gentle Anesthesia for Pain-Free Relief</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone Row 3: Left Side -->
+        <div class="timeline-row row-left" data-step-row="2">
+          <div class="timeline-node-dot">03</div>
+          <div class="timeline-card">
+            <div class="story-step-badge">Stage 03 • Digital Strength</div>
+            <h3 class="story-title" data-i18n="journey_c3_title">CAD/CAM Zirconia Crowns & Aligners</h3>
+            <div class="story-marathi marathi-text" data-i18n="journey_c3_mr">मजबूत झिरकोनिया क्राउन व इनव्हिजिबल अलाइनर्स</div>
+            <p class="story-desc" data-i18n="journey_c3_desc">
+              Custom-milled with digital 3D precision to match the natural shade and bite of your surrounding teeth. Zirconia crowns withstand 1,200+ MPa chewing force while clear aligners discreetly align crooked teeth.
+            </p>
+            <div class="story-features-list">
+              <div class="feature-item"><i data-lucide="cpu"></i> <span>Micron-Accurate Digital Margin Fit</span></div>
+              <div class="feature-item"><i data-lucide="smile"></i> <span>Seamless Natural Color Matching</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestone Row 4: Right Side -->
+        <div class="timeline-row row-right" data-step-row="3">
+          <div class="timeline-node-dot">04</div>
+          <div class="timeline-card">
+            <div class="story-step-badge highlight">Stage 04 • The Result</div>
+            <h3 class="story-title" data-i18n="journey_c4_title">A Lifetime of Pain-Free Smiles</h3>
+            <div class="story-marathi marathi-text" data-i18n="journey_c4_mr">आयुष्यभरासाठी निरोगी व सुंदर हास्य</div>
+            <p class="story-desc" data-i18n="journey_c4_desc">
+              From preventive cleaning to full cosmetic smile rehabilitation, every treatment at Oracare is planned with long-term clinical durability and Dr. Pratiksha's gentle, patient-first care.
+            </p>
+            <div class="story-cta-box">
+              <a href="#appointment" class="btn btn-primary btn-sm">
+                <i data-lucide="calendar"></i>
+                <span data-i18n="journey_btn_book">Book Your Consultation</span>
+              </a>
+              <a href="tel:9545058909" class="btn btn-secondary btn-sm">
+                <i data-lucide="phone"></i>
+                <span>Call Dr. Pratiksha</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 

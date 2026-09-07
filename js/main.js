@@ -8,6 +8,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initClinicStatus();
   initMobileNav();
+  initToothScrollJourney();
   initSymptomChecker();
   initBeforeAfterSlider();
   initAppointmentBooking();
@@ -507,10 +508,52 @@ const i18nDictionary = {
     celeb_title: "छान! चमकदार व निरोगी दात! ✨",
     celeb_msg: "तुम्ही डॉक्टरांनी शिफारस केलेले पूर्ण २-मिनिटांचे ब्रशिंग यशस्वीपणे पूर्ण केले आहे. निरोगी दातांसाठी हे दिवसातून २ वेळा करा!",
     brush_again: "पुन्हा सुरू करा",
-    brush_book: "क्लिनिक चेकअप बुक करा"
+    brush_book: "क्लिनिक चेकअप बुक करा",
+    nav_journey: "टूथ जर्नी ✨",
+    journey_badge: "आधुनिक डिजिटल दंत तंत्रज्ञान",
+    journey_title: "निरोगी व सुंदर हास्याचा प्रवास",
+    journey_subtitle: "डॉ. प्रतीक्षा बार्गे दात कसे स्वच्छ करतात, वाचवतात व मजबूत करतात हे खाली स्क्रोल करून पहा.",
+    journey_step1_nav: "इनॅमल संरक्षण",
+    journey_step2_nav: "रूट कॅनल",
+    journey_step3_nav: "झिरकोनिया क्राउन",
+    journey_step4_nav: "चमकदार हास्य",
+    journey_c1_title: "इनॅमल संरक्षण व डीप क्लिनिंग",
+    journey_c1_mr: "दातांचे नैसर्गिक इनॅमल संरक्षण व स्वच्छता",
+    journey_c1_desc: "दातांचे नैसर्गिक इनॅमल हाडांपेक्षाही मजबूत असते. अल्ट्रासॉनिक क्लिनिंग आणि फ्लोराइड कोटिंगमुळे दातांचे इनॅमल न घासता टार्टर व बॅक्टेरिया पूर्णपणे निघून जातात.",
+    journey_c2_title: "वेदनामुक्त रोटरी रूट कॅनल",
+    journey_c2_mr: "वेदनामुक्त रोटरी रूट कॅनल उपचार",
+    journey_c2_desc: "सड किंवा कीड नसेपर्यंत पोहोचल्यास दात काढण्याची गरज नसते. आधुनिक जर्मन रोटरी तंत्रज्ञानाने डॉ. प्रतीक्षा दात वाचवतात आणि १-२ फेऱ्यांमध्ये पूर्ण आराम देतात.",
+    journey_c3_title: "मजबूत झिरकोनिया क्राउन व अलाइनर्स",
+    journey_c3_mr: "मजबूत झिरकोनिया क्राउन व इनव्हिजिबल अलाइनर्स",
+    journey_c3_desc: "डिजिटल ३D स्कॅनिंगने तयार केलेले झिरकोनिया क्राउन्स चघळण्याची पूर्ण ताकद देतात आणि पारदर्शक अलाइनर्स वाकडे दात सरळ करतात.",
+    journey_c4_title: "आयुष्यभरासाठी निरोगी व सुंदर हास्य",
+    journey_c4_mr: "आयुष्यभरासाठी निरोगी व सुंदर हास्य",
+    journey_c4_desc: "नियमित स्वच्छता ते संपूर्ण स्माइल डिझाइन - ओराकेअरमध्ये प्रत्येक रुग्णाला मिळते सुरक्षित, सौम्य व दीर्घकाळ टिकणारी उपचार सेवा.",
+    journey_btn_book: "अपॉइंटमेंट बुक करा"
   },
   en: {
     nav_home: "Home",
+    nav_journey: "Tooth Journey",
+    journey_badge: "Interactive Dental Engineering",
+    journey_title: "The Anatomy of a Healthy Smile",
+    journey_subtitle: "Scroll down to discover how Dr. Pratiksha protects, relieves, and restores your natural tooth at every depth.",
+    journey_step1_nav: "Enamel Shield",
+    journey_step2_nav: "Root Relief",
+    journey_step3_nav: "Digital Crown",
+    journey_step4_nav: "Radiant Smile",
+    journey_c1_title: "Enamel Defense & Deep Hygiene",
+    journey_c1_mr: "दातांचे नैसर्गिक इनॅमल संरक्षण व स्वच्छता",
+    journey_c1_desc: "Your natural enamel is harder than bone, but vulnerable to micro-acid attacks. With ultrasonic scaling and protective fluoridation, Dr. Pratiksha removes calcified tartar without scraping natural tooth enamel.",
+    journey_c2_title: "Painless Rotary Root Canal",
+    journey_c2_mr: "वेदनामुक्त रोटरी रूट कॅनल उपचार",
+    journey_c2_desc: "When decay reaches the internal nerve pulp, extraction isn't necessary. Using German endodontic rotary motors and apex locators, Dr. Pratiksha gently cleans the root canal system with zero pain.",
+    journey_c3_title: "CAD/CAM Zirconia Crowns & Aligners",
+    journey_c3_mr: "मजबूत झिरकोनिया क्राउन व इनव्हिजिबल अलाइनर्स",
+    journey_c3_desc: "Custom-milled with digital 3D precision to match the natural shade and bite of your surrounding teeth. Zirconia crowns withstand 1,200+ MPa chewing force while clear aligners discreetly align crooked teeth.",
+    journey_c4_title: "A Lifetime of Pain-Free Smiles",
+    journey_c4_mr: "आयुष्यभरासाठी निरोगी व सुंदर हास्य",
+    journey_c4_desc: "From preventive cleaning to full cosmetic smile rehabilitation, every treatment at Oracare is planned with long-term clinical durability and Dr. Pratiksha's gentle, patient-first care.",
+    journey_btn_book: "Book Consultation",
     nav_services: "Treatments",
     nav_symptoms: "Symptom Checker",
     nav_doctor: "Dr. Pratiksha",
@@ -581,6 +624,8 @@ function initLanguageSwitcher() {
         el.textContent = dict[key];
       }
     });
+
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
   }
 
   function toggleLanguage() {
@@ -942,3 +987,187 @@ function initToothbrushCoach() {
   updateQuadrantUI();
   updateTimerDisplay();
 }
+
+/* ==========================================================================
+   12. APPLE-STYLE INTERACTIVE TOOTH SCROLL JOURNEY (TIMELINE & PARALLAX)
+   ========================================================================== */
+function initToothScrollJourney() {
+  const section = document.getElementById('tooth-journey');
+  const timeline = document.getElementById('appleTimeline');
+  if (!section || !timeline) return;
+
+  const traveler = document.getElementById('toothTraveler');
+  const tooth3D = document.getElementById('appleTooth3D');
+  const internalLayer = document.getElementById('toothInternalLayer');
+  const crownLayer = document.getElementById('toothCrownLayer');
+  const auraRing = document.getElementById('toothAuraRing');
+  const sparkles = document.getElementById('toothSparkles');
+  const statusText = document.getElementById('toothStatusText');
+  const spineLineFill = document.getElementById('spineLineFill');
+  const rows = document.querySelectorAll('.timeline-row');
+
+  // Refresh Lucide icons inside section
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+  }
+
+  const stageTitlesEn = [
+    "Stage 1: Enamel Protection",
+    "Stage 2: Painless Rotary RCT",
+    "Stage 3: CAD/CAM Digital Crown",
+    "Stage 4: Lifetime Smile"
+  ];
+
+  const stageTitlesMr = [
+    "टप्पा १: इनॅमल संरक्षण",
+    "टप्पा २: वेदनामुक्त रोटरी RCT",
+    "टप्पा ३: मजबूत झिरकोनिया क्राउन",
+    "टप्पा ४: आयुष्यभरासाठी सुंदर हास्य"
+  ];
+
+  let isVisible = true;
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+      });
+    }, { threshold: 0 });
+    observer.observe(section);
+  }
+
+  let lastStep = -1;
+  window.addEventListener('languageChanged', () => {
+    lastStep = -1;
+  });
+
+  function onScrollFrame() {
+    if (isVisible && rows.length > 0 && traveler) {
+      const timelineRect = timeline.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const timelineTop = window.pageYOffset + timelineRect.top;
+
+      // Vertical bounds: clamped strictly between Row 1 and Row 4
+      const row1 = rows[0];
+      const row4 = rows[rows.length - 1];
+      const toothHeight = traveler.offsetHeight || 330;
+
+      const row1Center = row1.offsetTop + (row1.offsetHeight / 2);
+      const row4Center = row4.offsetTop + (row4.offsetHeight / 2);
+
+      // minY aligns tooth with Milestone 1 (never overlaps header!)
+      const minY = Math.max(20, row1Center - toothHeight / 2);
+      // maxY aligns tooth with Milestone 4 (never hangs over into next section!)
+      const maxY = Math.max(minY, row4Center - toothHeight / 2);
+
+      // Where the tooth wants to be: centered in user's viewport
+      const viewportCenterOnPage = window.pageYOffset + windowHeight * 0.5;
+      const targetY = viewportCenterOnPage - timelineTop - toothHeight / 2;
+
+      // Clamp cleanly so tooth stays within timeline bounds
+      const clampedY = Math.max(minY, Math.min(maxY, targetY));
+
+      // Move the tooth down smoothly along the spine!
+      traveler.style.transform = `translate3d(-50%, ${clampedY.toFixed(1)}px, 0)`;
+
+      // Normalized progress between Row 1 and Row 4 [0.0, 1.0]
+      const totalDistance = maxY - minY;
+      const progress = totalDistance > 0 ? (clampedY - minY) / totalDistance : 0;
+
+      // Update spine neon fill line
+      if (spineLineFill) {
+        spineLineFill.style.height = `${(progress * 100).toFixed(1)}%`;
+      }
+
+      // Check which row is active based on tooth's vertical position
+      const toothCenterY = clampedY + toothHeight / 2;
+      let activeIndex = 0;
+      rows.forEach((row, idx) => {
+        const rowCenter = row.offsetTop + row.offsetHeight / 2;
+        if (toothCenterY >= rowCenter - 120) {
+          activeIndex = idx;
+        }
+      });
+
+      // Update active state on rows
+      rows.forEach((row, idx) => {
+        row.classList.toggle('active', idx === activeIndex);
+      });
+
+      // Update status text
+      if (activeIndex !== lastStep) {
+        lastStep = activeIndex;
+        if (statusText) {
+          const currentLang = localStorage.getItem('oracare_lang') || 'en';
+          statusText.textContent = currentLang === 'mr'
+            ? stageTitlesMr[activeIndex]
+            : stageTitlesEn[activeIndex];
+        }
+      }
+
+      // Dynamic 3D tooth tilt
+      if (tooth3D) {
+        const rotY = (progress - 0.5) * 32;
+        const rotX = Math.sin(progress * Math.PI) * -8;
+        const scale = 0.95 + Math.sin(progress * Math.PI) * 0.12;
+        tooth3D.style.transform = `perspective(1000px) rotateY(${rotY.toFixed(1)}deg) rotateX(${rotX.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
+      }
+
+      // Stage 2: Internal Dentin & Pulp Chamber cross-section reveal (progress 0.18 - 0.55)
+      if (internalLayer) {
+        if (progress > 0.18 && progress < 0.55) {
+          let opacity = 0;
+          if (progress < 0.35) {
+            opacity = (progress - 0.18) / 0.17;
+          } else {
+            opacity = (0.55 - progress) / 0.15;
+          }
+          internalLayer.style.opacity = Math.max(0, Math.min(1, opacity)).toFixed(2);
+        } else {
+          internalLayer.style.opacity = '0';
+        }
+      }
+
+      // Stage 3: Digital Crown Cap sliding down and docking (progress 0.42 - 0.82)
+      if (crownLayer) {
+        if (progress >= 0.42 && progress <= 0.82) {
+          const crownProg = Math.max(0, Math.min(1, (progress - 0.42) / 0.22));
+          const translateY = (-60 * (1 - crownProg)).toFixed(1);
+          crownLayer.style.transform = `translate(0, ${translateY}px)`;
+          crownLayer.style.opacity = crownProg.toFixed(2);
+        } else if (progress > 0.82) {
+          crownLayer.style.transform = 'translate(0, 0)';
+          crownLayer.style.opacity = '1';
+        } else {
+          crownLayer.style.opacity = '0';
+          crownLayer.style.transform = 'translate(0, -60px)';
+        }
+      }
+
+      // Stage 4: Radiant Aura Glow & Sparkle Burst (progress 0.70 - 1.0)
+      if (auraRing) {
+        if (progress >= 0.70) {
+          const auraProg = Math.min(1, (progress - 0.70) / 0.30);
+          auraRing.style.opacity = auraProg.toFixed(2);
+          auraRing.style.transform = `translate(-50%, -50%) scale(${(0.85 + auraProg * 0.3).toFixed(2)})`;
+        } else {
+          auraRing.style.opacity = '0';
+          auraRing.style.transform = 'translate(-50%, -50%) scale(0.85)';
+        }
+      }
+
+      if (sparkles) {
+        if (progress >= 0.70) {
+          sparkles.classList.add('visible');
+        } else {
+          sparkles.classList.remove('visible');
+        }
+      }
+    }
+
+    requestAnimationFrame(onScrollFrame);
+  }
+
+  requestAnimationFrame(onScrollFrame);
+}
+
+
