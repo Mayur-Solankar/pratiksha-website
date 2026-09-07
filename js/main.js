@@ -744,7 +744,7 @@ function initReviewModal() {
 }
 
 /* ==========================================================================
-   11. INTERACTIVE 2-MINUTE TOOTHBRUSHING COACH & QUADRANT TIMER
+   11. INTERACTIVE 2-MINUTE TOOTHBRUSHING COACH & ANIMATED KID QUADRANT TIMER
    ========================================================================== */
 function initToothbrushCoach() {
   const modal = document.getElementById('brushCoachModal');
@@ -758,45 +758,50 @@ function initToothbrushCoach() {
   const audioToggleBtn = document.getElementById('timerAudioToggleBtn');
   const restartBtn = document.getElementById('restartBrushBtn');
 
-  const progressCircle = document.getElementById('timerProgressCircle');
   const secondsDisplay = document.getElementById('quadrantSeconds');
   const totalDisplay = document.getElementById('totalTimeDisplay');
   const playPauseText = document.getElementById('playPauseText');
+  const playPauseIcon = document.getElementById('playPauseIcon');
 
   const actionTitle = document.getElementById('brushActionTitle');
   const actionTip = document.getElementById('brushActionTip');
   const celebrationPanel = document.getElementById('brushCelebrationPanel');
+  const kidWrapper = document.getElementById('kidIllustrationWrapper');
+  const activeQuadBadge = document.getElementById('activeQuadrantBadgeText');
+  const buzzerToast = document.getElementById('buzzerToast');
+  const buzzerToastText = document.getElementById('buzzerToastText');
+  const musicBadge = document.getElementById('musicBadge');
 
   if (!modal) return;
 
   const quadrants = [
     {
+      id: "q1",
+      badge: "Quadrant 1: Upper Right (वरचा उजवा भाग)",
       title: "Brush Upper Right Quadrant (वरचा उजवा भाग)",
-      tip: "Clean the outer, chewing, and inner teeth surfaces using gentle small circular motions at a 45° angle to the gumline.",
-      quadClass: "top-right",
-      stepId: "quadStep1",
-      mouthId: "mouthQ1"
+      tip: "Clean outer, chewing & inside tooth surfaces using gentle small circular motions at a 45° angle to the gumline.",
+      toast: "Switch to Quadrant 1: Upper Right (वरचा उजवा भाग) 🪥"
     },
     {
+      id: "q2",
+      badge: "Quadrant 2: Upper Left (वरचा डावा भाग)",
       title: "Brush Upper Left Quadrant (वरचा डावा भाग)",
-      tip: "Move smoothly to the upper left teeth. Don't press too hard — gentle brushing removes plaque without damaging enamel.",
-      quadClass: "top-left",
-      stepId: "quadStep2",
-      mouthId: "mouthQ2"
+      tip: "Move smoothly to upper left teeth. Don't press too hard — gentle brushing removes plaque without damaging enamel.",
+      toast: "Switch to Quadrant 2: Upper Left (वरचा डावा भाग) 🪥"
     },
     {
+      id: "q3",
+      badge: "Quadrant 3: Lower Left (खालचा डावा भाग)",
       title: "Brush Lower Left Quadrant (खालचा डावा भाग)",
-      tip: "Clean lower left teeth. Make sure to reach behind the back molars where food particles often hide.",
-      quadClass: "bottom-left",
-      stepId: "quadStep3",
-      mouthId: "mouthQ3"
+      tip: "Clean lower left teeth. Make sure to reach right behind the back molars where food particles hide.",
+      toast: "Switch to Quadrant 3: Lower Left (खालचा डावा भाग) 🪥"
     },
     {
+      id: "q4",
+      badge: "Quadrant 4: Lower Right (खालचा उजवा भाग)",
       title: "Brush Lower Right Quadrant (खालचा उजवा भाग)",
-      tip: "Final quadrant! Finish with gentle strokes along the tongue and inner chewing surfaces for fresh breath.",
-      quadClass: "bottom-right",
-      stepId: "quadStep4",
-      mouthId: "mouthQ4"
+      tip: "Final quadrant! Finish with gentle strokes along lower teeth, chewing surfaces, and a gentle tongue sweep.",
+      toast: "Switch to Quadrant 4: Lower Right (खालचा उजवा भाग) 🪥"
     }
   ];
 
@@ -804,38 +809,145 @@ function initToothbrushCoach() {
   let remainingQuadrantSeconds = 30;
   let totalRemainingSeconds = 120;
   let timerInterval = null;
+  let musicInterval = null;
   let isRunning = false;
   let isAudioEnabled = true;
+  let buzzerToastTimer = null;
+  let audioCtx = null;
 
-  // Web Audio API Synth Chime (no external mp3 files needed)
-  function playQuadrantChime(frequency = 587.33, duration = 0.3) {
-    if (!isAudioEnabled) return;
+  function getAudioContext() {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+      }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(() => {});
+    }
+    return audioCtx;
+  }
+
+  // Synthesize pleasant chime/pluck note using Web Audio API
+  function playSynthNote(freq, duration = 0.16, type = 'triangle', vol = 0.12) {
+    if (!isAudioEnabled || freq <= 0) return;
     try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getAudioContext();
+      if (!ctx) return;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
 
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(frequency, ctx.currentTime);
-      gain.gain.setValueAtTime(0.2, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      gain.gain.setValueAtTime(vol, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
-      osc.start();
+      osc.start(ctx.currentTime);
       osc.stop(ctx.currentTime + duration);
-    } catch (e) {
-      // Audio not permitted without interaction
+    } catch (e) {}
+  }
+
+  // Catchy Upbeat Background Music Engine (Pentatonic Marimba/Synth with Bassline)
+  // 32-step loop played every 220ms (~136 BPM cheerful kid tempo)
+  const melodyNotes = [
+    523.25, 0, 659.25, 783.99,      // C5, E5, G5
+    880.00, 783.99, 659.25, 0,       // A5, G5, E5
+    587.33, 659.25, 783.99, 0,       // D5, E5, G5
+    659.25, 587.33, 523.25, 0,       // E5, D5, C5
+    659.25, 783.99, 1046.50, 0,      // E5, G5, C6
+    880.00, 1046.50, 783.99, 0,      // A5, C6, G5
+    659.25, 523.25, 587.33, 659.25,  // E5, C5, D5, E5
+    523.25, 0, 0, 0                  // C5 rest
+  ];
+
+  const bassNotes = [
+    130.81, 0, 130.81, 0,            // C3
+    174.61, 0, 174.61, 0,            // F3
+    196.00, 0, 196.00, 0,            // G3
+    130.81, 0, 130.81, 0,            // C3
+    164.81, 0, 164.81, 0,            // E3
+    174.61, 0, 174.61, 0,            // F3
+    196.00, 0, 196.00, 0,            // G3
+    130.81, 0, 130.81, 0             // C3
+  ];
+
+  let musicStep = 0;
+
+  function startBackgroundMusic() {
+    stopBackgroundMusic();
+    musicStep = 0;
+    musicInterval = setInterval(() => {
+      if (!isRunning || !isAudioEnabled) return;
+      const mNote = melodyNotes[musicStep];
+      const bNote = bassNotes[musicStep];
+
+      if (mNote > 0) {
+        playSynthNote(mNote, 0.16, 'triangle', 0.10);
+      }
+      if (bNote > 0) {
+        playSynthNote(bNote, 0.14, 'sine', 0.08);
+      }
+
+      musicStep = (musicStep + 1) % melodyNotes.length;
+    }, 220);
+  }
+
+  function stopBackgroundMusic() {
+    if (musicInterval) {
+      clearInterval(musicInterval);
+      musicInterval = null;
     }
   }
 
+  // Distinct energetic 2-tone buzzer for quadrant changes (at 30s, 60s, 90s)
+  function playQuadrantBuzzer() {
+    if (!isAudioEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      // Dual energetic buzz pulses
+      [0, 0.16].forEach(offset => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(440, ctx.currentTime + offset);
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + offset + 0.12);
+        gain.gain.setValueAtTime(0.24, ctx.currentTime + offset);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + offset + 0.14);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + offset);
+        osc.stop(ctx.currentTime + offset + 0.15);
+      });
+    } catch (e) {}
+  }
+
+  // Celebration fanfare on 2-minute completion
   function playCelebrationFanfare() {
     if (!isAudioEnabled) return;
-    [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
-      setTimeout(() => playQuadrantChime(freq, 0.4), i * 180);
+    const notes = [
+      { f: 523.25, d: 0.18, t: 0 },
+      { f: 659.25, d: 0.18, t: 160 },
+      { f: 783.99, d: 0.18, t: 320 },
+      { f: 1046.50, d: 0.45, t: 480 },
+      { f: 880.00, d: 0.20, t: 750 },
+      { f: 1046.50, d: 0.80, t: 920 }
+    ];
+    notes.forEach(n => {
+      setTimeout(() => playSynthNote(n.f, n.d, 'triangle', 0.24), n.t);
     });
+  }
+
+  function showBuzzerToast(text) {
+    if (!buzzerToast) return;
+    if (buzzerToastText) buzzerToastText.textContent = text;
+    buzzerToast.classList.add('show');
+    if (buzzerToastTimer) clearTimeout(buzzerToastTimer);
+    buzzerToastTimer = setTimeout(() => {
+      buzzerToast.classList.remove('show');
+    }, 3500);
   }
 
   function updateQuadrantUI() {
@@ -844,21 +956,31 @@ function initToothbrushCoach() {
 
     if (actionTitle) actionTitle.textContent = quad.title;
     if (actionTip) actionTip.textContent = quad.tip;
+    if (activeQuadBadge) activeQuadBadge.textContent = quad.badge;
 
-    // Update Steps
-    document.querySelectorAll('.quad-step').forEach((step, idx) => {
-      step.classList.remove('active', 'completed');
-      if (idx < currentQuadrantIndex) {
-        step.classList.add('completed');
-      } else if (idx === currentQuadrantIndex) {
-        step.classList.add('active');
+    // Update Kid Illustration quadrant positioning class (q1, q2, q3, q4)
+    if (kidWrapper) {
+      kidWrapper.classList.remove('q1', 'q2', 'q3', 'q4');
+      kidWrapper.classList.add(quad.id);
+      if (isRunning) {
+        kidWrapper.classList.remove('paused');
+      } else {
+        kidWrapper.classList.add('paused');
       }
-    });
+    }
 
-    // Update Mouth Diagram
-    document.querySelectorAll('.mouth-quad').forEach(mq => mq.classList.remove('active'));
-    const activeMouth = document.getElementById(quad.mouthId);
-    if (activeMouth) activeMouth.classList.add('active');
+    // Update Step indicators (Q1..Q4)
+    for (let i = 1; i <= 4; i++) {
+      const stepEl = document.getElementById(`quadStep${i}`);
+      if (stepEl) {
+        stepEl.classList.remove('active', 'completed');
+        if (i - 1 < currentQuadrantIndex) {
+          stepEl.classList.add('completed');
+        } else if (i - 1 === currentQuadrantIndex) {
+          stepEl.classList.add('active');
+        }
+      }
+    }
   }
 
   function updateTimerDisplay() {
@@ -870,11 +992,19 @@ function initToothbrushCoach() {
       totalDisplay.textContent = `Total: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Circular SVG Dashoffset (circumference = 540)
-    if (progressCircle) {
-      const progress = (30 - remainingQuadrantSeconds) / 30;
-      const offset = progress * 540;
-      progressCircle.style.strokeDashoffset = offset;
+    // Update mini-progress bars inside each quadrant pill
+    for (let i = 0; i < 4; i++) {
+      const fillEl = document.getElementById(`quadFill${i + 1}`);
+      if (fillEl) {
+        if (i < currentQuadrantIndex) {
+          fillEl.style.width = '100%';
+        } else if (i === currentQuadrantIndex) {
+          const quadElapsed = 30 - remainingQuadrantSeconds;
+          fillEl.style.width = `${Math.min(100, Math.max(0, (quadElapsed / 30) * 100))}%`;
+        } else {
+          fillEl.style.width = '0%';
+        }
+      }
     }
   }
 
@@ -882,14 +1012,30 @@ function initToothbrushCoach() {
     if (totalRemainingSeconds <= 0) {
       // Finished full routine!
       clearInterval(timerInterval);
+      stopBackgroundMusic();
       isRunning = false;
       playCelebrationFanfare();
 
+      if (kidWrapper) {
+        kidWrapper.classList.add('paused');
+      }
+
       if (playPauseText) playPauseText.textContent = "Finished!";
+      if (playPauseIcon) {
+        playPauseIcon.setAttribute('data-lucide', 'check-circle');
+        if (window.lucide) lucide.createIcons();
+      }
       if (celebrationPanel) celebrationPanel.style.display = 'block';
 
-      // Mark all completed
-      document.querySelectorAll('.quad-step').forEach(s => s.classList.add('completed'));
+      // Mark all completed and fill 100%
+      for (let i = 1; i <= 4; i++) {
+        const stepEl = document.getElementById(`quadStep${i}`);
+        const fillEl = document.getElementById(`quadFill${i}`);
+        if (stepEl) stepEl.classList.add('completed');
+        if (fillEl) fillEl.style.width = '100%';
+      }
+
+      showBuzzerToast('🎉 Routine Complete! 100% Sparkling Clean Teeth!');
       return;
     }
 
@@ -900,7 +1046,8 @@ function initToothbrushCoach() {
     if (remainingQuadrantSeconds <= 0 && totalRemainingSeconds > 0) {
       currentQuadrantIndex++;
       remainingQuadrantSeconds = 30;
-      playQuadrantChime(880, 0.5); // Higher bell sound when switching quadrant!
+      playQuadrantBuzzer();
+      showBuzzerToast(`🔔 BUZZER! ${quadrants[currentQuadrantIndex].toast}`);
       updateQuadrantUI();
     }
 
@@ -909,11 +1056,24 @@ function initToothbrushCoach() {
 
   function startTimer() {
     if (isRunning) return;
+    getAudioContext();
     isRunning = true;
+
     if (playPauseText) playPauseText.textContent = "Pause Routine";
+    if (playPauseIcon) {
+      playPauseIcon.setAttribute('data-lucide', 'pause');
+      if (window.lucide) lucide.createIcons();
+    }
     if (celebrationPanel) celebrationPanel.style.display = 'none';
 
-    playQuadrantChime(523.25, 0.2); // Start chime
+    if (kidWrapper) {
+      kidWrapper.classList.remove('paused');
+    }
+
+    // Play pleasant initial chime and start catchy music track
+    playSynthNote(523.25, 0.25, 'triangle', 0.16);
+    startBackgroundMusic();
+
     timerInterval = setInterval(tick, 1000);
   }
 
@@ -921,18 +1081,40 @@ function initToothbrushCoach() {
     if (!isRunning) return;
     isRunning = false;
     clearInterval(timerInterval);
+    stopBackgroundMusic();
+
+    if (kidWrapper) {
+      kidWrapper.classList.add('paused');
+    }
+
     if (playPauseText) playPauseText.textContent = "Resume Brushing";
+    if (playPauseIcon) {
+      playPauseIcon.setAttribute('data-lucide', 'play');
+      if (window.lucide) lucide.createIcons();
+    }
   }
 
   function resetTimer() {
     clearInterval(timerInterval);
+    stopBackgroundMusic();
     isRunning = false;
     currentQuadrantIndex = 0;
     remainingQuadrantSeconds = 30;
     totalRemainingSeconds = 120;
 
     if (playPauseText) playPauseText.textContent = "Start Brushing";
+    if (playPauseIcon) {
+      playPauseIcon.setAttribute('data-lucide', 'play');
+      if (window.lucide) lucide.createIcons();
+    }
     if (celebrationPanel) celebrationPanel.style.display = 'none';
+    if (buzzerToast) buzzerToast.classList.remove('show');
+
+    if (kidWrapper) {
+      kidWrapper.classList.remove('paused');
+      kidWrapper.classList.remove('q1', 'q2', 'q3', 'q4');
+      kidWrapper.classList.add('q1');
+    }
 
     updateQuadrantUI();
     updateTimerDisplay();
@@ -946,6 +1128,7 @@ function initToothbrushCoach() {
 
   function closeCoach() {
     pauseTimer();
+    stopBackgroundMusic();
     modal.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -961,6 +1144,7 @@ function initToothbrushCoach() {
 
   if (playPauseBtn) {
     playPauseBtn.addEventListener('click', () => {
+      getAudioContext();
       if (isRunning) {
         pauseTimer();
       } else {
@@ -980,10 +1164,18 @@ function initToothbrushCoach() {
         icon.setAttribute('data-lucide', isAudioEnabled ? 'volume-2' : 'volume-x');
         if (window.lucide) lucide.createIcons();
       }
+      if (musicBadge) {
+        musicBadge.style.opacity = isAudioEnabled ? '1' : '0.4';
+      }
+      if (!isAudioEnabled) {
+        stopBackgroundMusic();
+      } else if (isRunning) {
+        startBackgroundMusic();
+      }
     });
   }
 
-  // Setup initial display
+  // Initial UI state setup
   updateQuadrantUI();
   updateTimerDisplay();
 }

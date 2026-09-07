@@ -3369,10 +3369,9 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 .modal-overlay {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(6px);
   z-index: 1000;
@@ -3619,8 +3618,17 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 
 /* Brush Timer Modal */
 .brush-modal-container {
-  max-width: 480px;
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
   text-align: center;
+  box-sizing: border-box;
+}
+
+.brush-body {
+  padding: 14px 12px 18px 12px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .coach-sub-badge {
@@ -3633,31 +3641,42 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 
 .quadrant-indicators-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0;
 }
 
 .quad-step {
+  min-width: 0;
+  overflow: hidden;
+  text-align: center;
   background: #F1F5F9;
   border: 1.5px solid transparent;
   border-radius: var(--radius-sm);
-  padding: 8px 4px;
+  padding: 6px 2px;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .quad-step span {
   display: block;
-  font-size: 0.86rem;
+  font-size: 0.80rem;
   font-weight: 800;
   color: #64748B;
+  line-height: 1.1;
 }
 
 .quad-step small {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.60rem;
   color: #94A3B8;
   font-weight: 600;
+  line-height: 1.15;
+  margin-top: 2px;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .quad-step.active {
@@ -3682,118 +3701,351 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   color: #10B981;
 }
 
-/* Circular Timer */
-.circular-timer-wrap {
-  position: relative;
-  width: 190px;
-  height: 190px;
-  margin: 0 auto 18px auto;
-}
-
-.timer-svg {
-  transform: rotate(-90deg);
-}
-
-.timer-bg-circle {
-  fill: none;
-  stroke: #E2E8F0;
-  stroke-width: 12;
-}
-
-.timer-progress-circle {
-  fill: none;
-  stroke: var(--primary);
-  stroke-width: 12;
-  stroke-linecap: round;
-  stroke-dasharray: 540;
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.8s linear, stroke 0.3s ease;
-}
-
-.timer-display-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* --- Compact Quadrant & Countdown Bar --- */
+.brush-top-bar {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-.timer-seconds {
-  font-size: 3.2rem;
+.quad-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #E2E8F0;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.quad-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--primary);
+  transition: width 0.3s linear;
+}
+
+.quad-step.active .quad-progress-fill {
+  background: #0D9488;
+}
+
+.quad-step.completed .quad-progress-fill {
+  width: 100% !important;
+  background: #10B981;
+}
+
+.brush-countdown-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #F8FAFC;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.countdown-main {
+  display: flex;
+  align-items: baseline;
+  color: var(--primary-dark);
+}
+
+.countdown-sec {
+  font-size: 1.6rem;
   font-weight: 800;
-  color: var(--text-main);
   line-height: 1;
 }
 
-.timer-label {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
+.countdown-unit {
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  margin-left: 2px;
 }
 
-.total-timer {
-  font-size: 0.74rem;
-  color: var(--primary-dark);
-  font-weight: 700;
-  margin-top: 4px;
+.countdown-divider {
+  color: #CBD5E1;
+  font-weight: 600;
 }
 
-/* Mouth Diagram */
-.quadrant-diagram-card {
-  background: #F8FAFC;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  margin-bottom: 20px;
-}
-
-.mouth-diagram {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.mouth-quad {
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: var(--radius-sm);
-  padding: 10px 6px;
-  font-size: 0.72rem;
+.countdown-total {
+  font-size: 0.82rem;
   font-weight: 700;
   color: #64748B;
-  transition: all 0.3s ease;
 }
 
-.mouth-quad.active {
-  background: #CCFBF1;
-  border-color: var(--primary);
-  color: var(--primary-darker);
-  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.18);
+/* --- Buzzer Toast Notification --- */
+.buzzer-toast {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+  border: 2px solid #F59E0B;
+  color: #92400E;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  animation: buzzerPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.brush-instruction-box strong {
+.buzzer-toast.show {
+  display: flex;
+}
+
+.buzzer-bell {
+  font-size: 1.2rem;
+  animation: buzzerBellShake 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes buzzerBellShake {
+  0% { transform: rotate(-15deg); }
+  100% { transform: rotate(15deg); }
+}
+
+@keyframes buzzerPopIn {
+  from { opacity: 0; transform: scale(0.9) translateY(-6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- Animated Kid Brushing Stage --- */
+.kid-brush-stage {
+  background: linear-gradient(180deg, #F0FDFA 0%, #E0F2FE 100%);
+  border: 2px solid #CCFBF1;
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(13, 148, 136, 0.06);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.active-quadrant-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--primary-light);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.12);
+  margin-bottom: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+  text-align: center;
+}
+
+.quad-badge-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.kid-illustration-wrapper {
+  width: 100%;
+  max-width: 220px;
+  height: 190px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Kid Eyes Blinking Animation */
+.kid-eye {
+  transform-origin: center;
+  animation: kidBlink 4s infinite;
+}
+
+@keyframes kidBlink {
+  0%, 96%, 100% { transform: scaleY(1); }
+  98% { transform: scaleY(0.1); }
+}
+
+/* Toothbrush Quadrant Scrubbing Animations */
+.animated-toothbrush {
+  transform-origin: 120px 140px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Quadrant 1: Upper Right (Patient's right = screen left teeth) */
+.kid-illustration-wrapper.q1 .animated-toothbrush {
+  transform: translate(0px, 0px);
+  animation: scrubQ1 0.6s ease-in-out infinite alternate;
+}
+@keyframes scrubQ1 {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  100% { transform: translate(6px, -4px) rotate(-8deg); }
+}
+
+/* Quadrant 2: Upper Left (Patient's left = screen right teeth) */
+.kid-illustration-wrapper.q2 .animated-toothbrush {
+  transform: translate(32px, 0px);
+  animation: scrubQ2 0.6s ease-in-out infinite alternate;
+}
+@keyframes scrubQ2 {
+  0% { transform: translate(30px, 0px) rotate(0deg); }
+  100% { transform: translate(36px, -4px) rotate(8deg); }
+}
+
+/* Quadrant 3: Lower Left (Patient's left = screen right lower teeth) */
+.kid-illustration-wrapper.q3 .animated-toothbrush {
+  transform: translate(30px, 18px);
+  animation: scrubQ3 0.6s ease-in-out infinite alternate;
+}
+@keyframes scrubQ3 {
+  0% { transform: translate(28px, 18px) rotate(0deg); }
+  100% { transform: translate(34px, 22px) rotate(6deg); }
+}
+
+/* Quadrant 4: Lower Right (Patient's right = screen left lower teeth) */
+.kid-illustration-wrapper.q4 .animated-toothbrush {
+  transform: translate(2px, 18px);
+  animation: scrubQ4 0.6s ease-in-out infinite alternate;
+}
+@keyframes scrubQ4 {
+  0% { transform: translate(0px, 18px) rotate(0deg); }
+  100% { transform: translate(6px, 22px) rotate(-6deg); }
+}
+
+/* Paused state */
+.kid-illustration-wrapper.paused .animated-toothbrush,
+.kid-illustration-wrapper.paused .foam-bubbles {
+  animation-play-state: paused !important;
+}
+
+/* Teeth active highlight pulses */
+.kid-illustration-wrapper.q1 .tooth-q1 {
+  fill: #CCFBF1 !important;
+  stroke: #0D9488 !important;
+}
+.kid-illustration-wrapper.q2 .tooth-q2 {
+  fill: #CCFBF1 !important;
+  stroke: #0D9488 !important;
+}
+.kid-illustration-wrapper.q3 .tooth-q3 {
+  fill: #CCFBF1 !important;
+  stroke: #0D9488 !important;
+}
+.kid-illustration-wrapper.q4 .tooth-q4 {
+  fill: #CCFBF1 !important;
+  stroke: #0D9488 !important;
+}
+
+/* Foam bubbles animation */
+.foam-bubbles {
+  animation: bubbleFloat 0.8s ease-in-out infinite alternate;
+}
+@keyframes bubbleFloat {
+  0% { transform: translateY(0) scale(0.95); }
+  100% { transform: translateY(-3px) scale(1.08); }
+}
+
+.kid-illustration-wrapper.q1 .foam-bubbles {
+  transform-origin: 120px 145px;
+}
+.kid-illustration-wrapper.q2 .foam-bubbles {
+  transform: translateX(32px);
+  transform-origin: 152px 145px;
+}
+.kid-illustration-wrapper.q3 .foam-bubbles {
+  transform: translate(30px, 18px);
+  transform-origin: 150px 165px;
+}
+.kid-illustration-wrapper.q4 .foam-bubbles {
+  transform: translate(2px, 18px);
+  transform-origin: 122px 165px;
+}
+
+/* Sparkle Star */
+.sparkle-star {
+  animation: starTwinkle 1.2s ease-in-out infinite;
+  transform-origin: 140px 138px;
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
+}
+
+/* Brush action card */
+.brush-action-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin-top: 8px;
+  border: 1px solid var(--border-subtle);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.brush-action-card strong {
   display: block;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
   color: var(--text-main);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  line-height: 1.3;
 }
 
-.brush-instruction-box p {
-  font-size: 0.8rem;
+.brush-action-card p {
+  font-size: 0.76rem;
   color: var(--text-muted);
   margin: 0;
+  line-height: 1.35;
+}
+
+.music-note-badge {
+  font-size: 0.9rem;
+  margin-left: 2px;
+  display: inline-block;
+  animation: musicBounce 1s infinite alternate;
+}
+
+@keyframes musicBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-2px); }
 }
 
 .brush-controls-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.brush-controls-row #timerPlayPauseBtn {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+}
+
+.brush-controls-row #timerResetBtn,
+.brush-controls-row #timerAudioToggleBtn {
+  flex: 0 0 auto;
+  padding: 10px 12px;
 }
 
 .brush-celebration-panel {
@@ -3897,14 +4149,24 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
 /* Ensure modal containers on mobile take 100% of the screen nicely */
 @media (max-width: 768px) {
   .modal-overlay {
-    padding: 12px !important;
+    padding: 10px !important;
   }
 
   .modal-container {
     width: 100% !important;
     max-width: 100% !important;
-    max-height: 90vh !important;
+    max-height: 92vh !important;
     border-radius: var(--radius-md) !important;
+    box-sizing: border-box !important;
+    margin: auto !important;
+  }
+
+  .brush-modal-container {
+    max-width: 100% !important;
+  }
+
+  .brush-body {
+    padding: 12px 10px 16px 10px !important;
   }
 
   .quadrant-indicators-row {
@@ -3912,27 +4174,34 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   }
 
   .quad-step {
-    padding: 6px 2px !important;
+    padding: 5px 2px !important;
   }
 
   .quad-step span {
-    font-size: 0.78rem !important;
+    font-size: 0.74rem !important;
   }
 
   .quad-step small {
-    font-size: 0.6rem !important;
+    font-size: 0.58rem !important;
   }
 
-  .mouth-diagram {
-    grid-template-columns: 1fr 1fr !important;
+  .kid-illustration-wrapper {
+    max-width: 200px !important;
+    height: 175px !important;
   }
 
-  .mouth-quad span {
-    font-size: 0.68rem !important;
+  .brush-controls-row {
+    gap: 6px !important;
   }
 
-  .brush-controls-row .btn {
-    padding: 12px 14px !important;
+  .brush-controls-row #timerPlayPauseBtn {
+    padding: 10px 10px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .brush-controls-row #timerResetBtn,
+  .brush-controls-row #timerAudioToggleBtn {
+    padding: 10px 10px !important;
   }
 }
 

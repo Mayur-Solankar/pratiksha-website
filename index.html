@@ -22,7 +22,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Stylesheet (with cache-buster for mobile browsers) -->
-  <link rel="stylesheet" href="css/styles.css?v=5.6">
+  <link rel="stylesheet" href="css/styles.css?v=6.0">
 </head>
 <body>
 
@@ -1660,64 +1660,182 @@
       </div>
 
       <div class="modal-body brush-body">
-        <!-- Quadrant Progress Indicators -->
-        <div class="quadrant-indicators-row">
-          <div class="quad-step active" id="quadStep1" data-quad="1">
-            <span>Q1</span>
-            <small data-i18n="q1_name">Upper Right</small>
+        <!-- Compact Quadrant Progress & Countdown Bar -->
+        <div class="brush-top-bar">
+          <div class="quadrant-indicators-row">
+            <div class="quad-step active" id="quadStep1" data-quad="1">
+              <span>Q1</span>
+              <small data-i18n="q1_name">Upper Right</small>
+              <div class="quad-progress-bar"><div class="quad-progress-fill" id="quadFill1" style="width: 0%;"></div></div>
+            </div>
+            <div class="quad-step" id="quadStep2" data-quad="2">
+              <span>Q2</span>
+              <small data-i18n="q2_name">Upper Left</small>
+              <div class="quad-progress-bar"><div class="quad-progress-fill" id="quadFill2" style="width: 0%;"></div></div>
+            </div>
+            <div class="quad-step" id="quadStep3" data-quad="3">
+              <span>Q3</span>
+              <small data-i18n="q3_name">Lower Left</small>
+              <div class="quad-progress-bar"><div class="quad-progress-fill" id="quadFill3" style="width: 0%;"></div></div>
+            </div>
+            <div class="quad-step" id="quadStep4" data-quad="4">
+              <span>Q4</span>
+              <small data-i18n="q4_name">Lower Right</small>
+              <div class="quad-progress-bar"><div class="quad-progress-fill" id="quadFill4" style="width: 0%;"></div></div>
+            </div>
           </div>
-          <div class="quad-step" id="quadStep2" data-quad="2">
-            <span>Q2</span>
-            <small data-i18n="q2_name">Upper Left</small>
-          </div>
-          <div class="quad-step" id="quadStep3" data-quad="3">
-            <span>Q3</span>
-            <small data-i18n="q3_name">Lower Left</small>
-          </div>
-          <div class="quad-step" id="quadStep4" data-quad="4">
-            <span>Q4</span>
-            <small data-i18n="q4_name">Lower Right</small>
+
+          <!-- Compact Countdown Pill -->
+          <div class="brush-countdown-pill">
+            <div class="countdown-main">
+              <span class="countdown-sec" id="quadrantSeconds">30</span><span class="countdown-unit">s</span>
+            </div>
+            <span class="countdown-divider">/</span>
+            <div class="countdown-total" id="totalTimeDisplay">Total: 2:00</div>
           </div>
         </div>
 
-        <!-- Interactive Visual Ring & Timer -->
-        <div class="brush-timer-center">
-          <div class="circular-timer-wrap">
-            <svg class="timer-svg" viewBox="0 0 200 200" width="190" height="190">
-              <circle class="timer-bg-circle" cx="100" cy="100" r="86"></circle>
-              <circle class="timer-progress-circle" id="timerProgressCircle" cx="100" cy="100" r="86"></circle>
+        <!-- Buzzer Alert Toast Notification (Fires on quadrant change) -->
+        <div class="buzzer-toast" id="buzzerToast">
+          <span class="buzzer-bell">🔔</span>
+          <strong id="buzzerToastText">BUZZER! Switch to Quadrant 2!</strong>
+        </div>
+
+        <!-- ANIMATED KID BRUSHING TEETH STAGE -->
+        <div class="kid-brush-stage" id="kidBrushStage">
+          <!-- Active Quadrant Glowing Badge -->
+          <div class="active-quadrant-badge" id="activeQuadrantBadge">
+            <span class="quad-badge-dot"></span>
+            <span id="activeQuadrantBadgeText">Quadrant 1: Upper Right</span>
+          </div>
+
+          <!-- Kid Illustration with Animated Toothbrush and Foam -->
+          <div class="kid-illustration-wrapper q1" id="kidIllustrationWrapper">
+            <svg class="kid-svg" viewBox="0 0 280 260" width="100%" height="100%" aria-label="Kid Brushing Teeth">
+              <defs>
+                <radialGradient id="kidCheek" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FDA4AF" stop-opacity="0.85"/>
+                  <stop offset="100%" stop-color="#FDA4AF" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="kidSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FED7AA"/>
+                  <stop offset="100%" stop-color="#FDBA74"/>
+                </linearGradient>
+                <linearGradient id="kidHair" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#475569"/>
+                  <stop offset="100%" stop-color="#1E293B"/>
+                </linearGradient>
+                <linearGradient id="brushHandle" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#0D9488"/>
+                  <stop offset="100%" stop-color="#2DD4BF"/>
+                </linearGradient>
+                <linearGradient id="pasteColor" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38BDF8"/>
+                  <stop offset="100%" stop-color="#0284C7"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Kid Shirt & Collar -->
+              <path d="M 80 240 Q 140 220 200 240 L 210 260 L 70 260 Z" fill="#3B82F6"/>
+              <path d="M 120 230 Q 140 242 160 230 L 154 246 Q 140 252 126 246 Z" fill="#FFFFFF"/>
+
+              <!-- Kid Neck -->
+              <rect x="126" y="180" width="28" height="30" rx="4" fill="#FDBA74"/>
+
+              <!-- Kid Ears -->
+              <circle cx="68" cy="124" r="16" fill="#FDBA74"/>
+              <circle cx="68" cy="124" r="9" fill="#FB923C" opacity="0.5"/>
+              <circle cx="212" cy="124" r="16" fill="#FDBA74"/>
+              <circle cx="212" cy="124" r="9" fill="#FB923C" opacity="0.5"/>
+
+              <!-- Kid Face / Head -->
+              <ellipse cx="140" cy="124" rx="72" ry="76" fill="url(#kidSkin)"/>
+
+              <!-- Hair Back & Cute Bangs -->
+              <path d="M 68 110 C 60 70, 95 30, 140 30 C 185 30, 220 70, 212 110 C 205 78, 180 50, 140 50 C 100 50, 75 78, 68 110 Z" fill="url(#kidHair)"/>
+              <path d="M 68 100 C 80 60, 120 54, 140 70 C 160 54, 200 60, 212 100 C 190 70, 160 66, 140 78 C 120 66, 90 70, 68 100 Z" fill="url(#kidHair)"/>
+
+              <!-- Eyebrows -->
+              <path d="M 94 95 Q 110 88 122 93" stroke="#334155" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <path d="M 186 95 Q 170 88 158 93" stroke="#334155" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+              <!-- Happy Eyes (Blinking animation) -->
+              <g class="kid-eye kid-eye-left">
+                <circle cx="108" cy="110" r="9" fill="#0F172A"/>
+                <circle cx="105" cy="107" r="3.5" fill="#FFFFFF"/>
+                <circle cx="111" cy="113" r="1.5" fill="#FFFFFF"/>
+              </g>
+              <g class="kid-eye kid-eye-right">
+                <circle cx="172" cy="110" r="9" fill="#0F172A"/>
+                <circle cx="169" cy="107" r="3.5" fill="#FFFFFF"/>
+                <circle cx="175" cy="113" r="1.5" fill="#FFFFFF"/>
+              </g>
+
+              <!-- Rosy Cheeks -->
+              <circle cx="92" cy="132" r="14" fill="url(#kidCheek)"/>
+              <circle cx="188" cy="132" r="14" fill="url(#kidCheek)"/>
+
+              <!-- Cute Button Nose -->
+              <ellipse cx="140" cy="124" rx="4.5" ry="3" fill="#EA580C" opacity="0.6"/>
+
+              <!-- Smiling Open Mouth with 4 Quadrant Teeth -->
+              <g id="mouthTeethGroup">
+                <!-- Mouth interior -->
+                <path d="M 104 140 Q 140 142 176 140 Q 172 176 140 178 Q 108 176 104 140 Z" fill="#991B1B"/>
+                <!-- Tongue -->
+                <path d="M 122 166 Q 140 156 158 166 Q 150 178 140 178 Q 130 178 122 166 Z" fill="#F43F5E"/>
+
+                <!-- Upper Teeth Row (Q1: Upper Right / Q2: Upper Left) -->
+                <rect class="tooth tooth-q1" id="toothQ1_1" x="108" y="140" width="15" height="11" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+                <rect class="tooth tooth-q1" id="toothQ1_2" x="123" y="140" width="16" height="13" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+                <rect class="tooth tooth-q2" id="toothQ2_1" x="141" y="140" width="16" height="13" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+                <rect class="tooth tooth-q2" id="toothQ2_2" x="157" y="140" width="15" height="11" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+
+                <!-- Lower Teeth Row (Q4: Lower Right / Q3: Lower Left) -->
+                <rect class="tooth tooth-q4" id="toothQ4_1" x="112" y="162" width="14" height="9" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+                <rect class="tooth tooth-q4" id="toothQ4_2" x="126" y="162" width="14" height="10" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+                <rect class="tooth tooth-q3" id="toothQ3_1" x="140" y="162" width="14" height="10" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+                <rect class="tooth tooth-q3" id="toothQ3_2" x="154" y="162" width="14" height="9" rx="2" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+              </g>
+
+              <!-- Animated Toothpaste Foam Bubbles -->
+              <g class="foam-bubbles" id="foamBubbles">
+                <circle class="bubble b1" cx="122" cy="144" r="5" fill="#FFFFFF" opacity="0.9"/>
+                <circle class="bubble b2" cx="128" cy="138" r="4" fill="#E0F2FE" opacity="0.8"/>
+                <circle class="bubble b3" cx="116" cy="148" r="3.5" fill="#FFFFFF" opacity="0.85"/>
+                <circle class="bubble b4" cx="134" cy="142" r="4.5" fill="#BAE6FD" opacity="0.9"/>
+                <circle class="bubble b5" cx="158" cy="144" r="5" fill="#FFFFFF" opacity="0.9"/>
+                <circle class="bubble b6" cx="150" cy="140" r="4" fill="#E0F2FE" opacity="0.85"/>
+              </g>
+
+              <!-- Animated Toothbrush (Moves dynamically to active quadrant) -->
+              <g class="animated-toothbrush" id="animatedToothbrush">
+                <!-- Bristles -->
+                <rect x="110" y="130" width="22" height="9" rx="2" fill="#E0F2FE" stroke="#38BDF8" stroke-width="1"/>
+                <!-- Toothpaste drop -->
+                <path d="M 112 130 C 114 124, 126 124, 130 130 Z" fill="url(#pasteColor)"/>
+                <!-- Brush Head Base -->
+                <rect x="108" y="138" width="26" height="6" rx="3" fill="url(#brushHandle)"/>
+                <!-- Brush Handle -->
+                <path d="M 121 144 L 90 220 C 87 226, 80 228, 74 224 C 68 220, 68 212, 72 206 L 115 144 Z" fill="url(#brushHandle)"/>
+                <circle cx="78" cy="216" r="4" fill="#FFFFFF" opacity="0.7"/>
+              </g>
+
+              <!-- Sparkle Star Over Active Teeth -->
+              <g class="sparkle-star" id="sparkleStar">
+                <path d="M 140 130 Q 140 138 148 138 Q 140 138 140 146 Q 140 138 132 138 Q 140 138 140 130 Z" fill="#FACC15"/>
+              </g>
             </svg>
-            <div class="timer-display-inner">
-              <span class="timer-seconds" id="quadrantSeconds">30</span>
-              <span class="timer-label" data-i18n="seconds_left">seconds left</span>
-              <span class="total-timer" id="totalTimeDisplay">Total: 2:00</span>
-            </div>
           </div>
 
-          <!-- Quadrant Visual Tooth Diagram -->
-          <div class="quadrant-diagram-card">
-            <div class="mouth-diagram" id="mouthDiagram">
-              <div class="mouth-quad top-right active" id="mouthQ1">
-                <span>Top Right (बाहेर व चावण्याचा भाग)</span>
-              </div>
-              <div class="mouth-quad top-left" id="mouthQ2">
-                <span>Top Left (वरचा डावा भाग)</span>
-              </div>
-              <div class="mouth-quad bottom-left" id="mouthQ3">
-                <span>Bottom Left (खालचा डावा भाग)</span>
-              </div>
-              <div class="mouth-quad bottom-right" id="mouthQ4">
-                <span>Bottom Right (खालचा उजवा भाग)</span>
-              </div>
-            </div>
-            <div class="brush-instruction-box">
-              <strong id="brushActionTitle">Brush Upper Right Quadrant</strong>
-              <p id="brushActionTip">Use small gentle circular strokes at a 45° angle towards gumline.</p>
-            </div>
+          <!-- Active Quadrant Instruction Box -->
+          <div class="brush-action-card">
+            <strong id="brushActionTitle">Brush Upper Right Quadrant (वरचा उजवा भाग)</strong>
+            <p id="brushActionTip">Gentle circular strokes along the gumline & chewing surfaces.</p>
           </div>
         </div>
 
-        <!-- Timer Controls -->
+        <!-- Timer Controls & Sound Toggle -->
         <div class="brush-controls-row">
           <button type="button" class="btn btn-primary btn-lg" id="timerPlayPauseBtn" style="flex: 1;">
             <i data-lucide="play" id="playPauseIcon" style="width: 20px; height: 20px;"></i>
@@ -1726,8 +1844,9 @@
           <button type="button" class="btn btn-secondary btn-lg" id="timerResetBtn" title="Reset Timer">
             <i data-lucide="rotate-ccw" style="width: 20px; height: 20px;"></i>
           </button>
-          <button type="button" class="btn btn-secondary btn-lg" id="timerAudioToggleBtn" title="Mute/Unmute Audio Chimes">
+          <button type="button" class="btn btn-secondary btn-lg" id="timerAudioToggleBtn" title="Music & Buzzer On/Off">
             <i data-lucide="volume-2" id="audioToggleIcon" style="width: 20px; height: 20px;"></i>
+            <span class="music-note-badge" id="musicBadge">🎵</span>
           </button>
         </div>
 
@@ -1736,7 +1855,7 @@
           <div class="celeb-stars">✨ 🦷 🌟 🪥 ✨</div>
           <h4 data-i18n="celeb_title">Sparkling Clean Smile! Great Job!</h4>
           <p data-i18n="celeb_msg">You completed the full 2-minute dentist-recommended routine. Do this twice daily for cavity-free teeth!</p>
-          <div style="display: flex; gap: 10px; justify-content: center; margin-top: 14px;">
+          <div style="display: flex; gap: 10px; justify-content: center; margin-top: 14px; flex-wrap: wrap;">
             <button type="button" class="btn btn-secondary btn-sm" id="restartBrushBtn" data-i18n="brush_again">Brush Again</button>
             <a href="#appointment" class="btn btn-primary btn-sm" id="bookAfterBrushBtn" data-i18n="brush_book">Book Clean-up Checkup</a>
           </div>
@@ -1757,6 +1876,6 @@
   </script>
 
   <!-- Custom Main Script -->
-  <script src="js/main.js?v=5.6"></script>
+  <script src="js/main.js?v=6.0"></script>
 </body>
 </html>
