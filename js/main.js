@@ -1087,13 +1087,13 @@ function initToothScrollJourney() {
           }
         });
       } else {
-        // Mobile: Clean sticky showcase stage under navbar
+        // Mobile: Showcase stage sits cleanly above cards; transform stays clean
         traveler.style.transform = '';
 
-        // Progress calculated from active card passing viewport center
+        // Progress calculated from whichever card is currently closest to or above the viewport mid
         rows.forEach((row, idx) => {
           const rowRect = row.getBoundingClientRect();
-          if (rowRect.top <= windowHeight * 0.58) {
+          if (rowRect.top <= windowHeight * 0.65) {
             activeIndex = idx;
           }
         });

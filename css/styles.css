@@ -4414,40 +4414,41 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
     display: none !important;
   }
 
-  /* On mobile: tooth acts as a sticky showcase stage right under the navbar */
+  /* On mobile: tooth sits gracefully as a showcase stage BEFORE the cards with clear spacing — NO sticky overlap */
   .apple-tooth-traveler {
-    position: sticky !important;
-    top: 60px !important;
-    left: 0 !important;
-    right: 0 !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
     transform: none !important;
     width: 100% !important;
     max-width: 340px !important;
-    height: 175px !important;
-    margin: 0 auto 20px auto !important;
-    z-index: 20 !important;
+    height: 190px !important;
+    margin: 0 auto 36px auto !important;
+    z-index: 5 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    background: rgba(4, 19, 27, 0.9) !important;
+    background: radial-gradient(circle at center, rgba(13, 148, 136, 0.18) 0%, rgba(4, 19, 27, 0.95) 75%) !important;
     backdrop-filter: blur(14px) !important;
     -webkit-backdrop-filter: blur(14px) !important;
-    border: 1px solid rgba(45, 212, 191, 0.3) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6) !important;
+    border: 1.5px solid rgba(45, 212, 191, 0.35) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 20px rgba(45, 212, 191, 0.12) !important;
     pointer-events: none !important;
   }
 
   .apple-tooth-svg {
-    width: 125px !important;
-    max-height: 120px !important;
+    width: 130px !important;
+    max-height: 125px !important;
   }
 
   .tooth-status-pill {
-    margin-top: 4px !important;
-    padding: 3px 12px !important;
+    margin-top: 6px !important;
+    padding: 4px 14px !important;
     background: rgba(15, 23, 42, 0.95) !important;
+    border: 1px solid rgba(45, 212, 191, 0.4) !important;
   }
 
   .tooth-status-pill .pill-dot {
@@ -4456,11 +4457,11 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   }
 
   .tooth-status-pill .pill-text {
-    font-size: 0.72rem !important;
+    font-size: 0.74rem !important;
   }
 
   .timeline-row {
-    margin-bottom: 30px !important;
+    margin-bottom: 36px !important;
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
@@ -4469,10 +4470,10 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   .timeline-node-dot {
     position: static !important;
     transform: none !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 10px !important;
     width: 32px !important;
     height: 32px !important;
-    font-size: 0.75rem !important;
+    font-size: 0.78rem !important;
     align-self: flex-start !important;
   }
 
@@ -4480,12 +4481,12 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
   .timeline-row.row-right .timeline-card {
     width: 100% !important;
     margin: 0 !important;
-    padding: 20px 20px !important;
+    padding: 22px 20px !important;
     opacity: 1 !important;
     transform: none !important;
-    background: rgba(15, 23, 42, 0.85) !important;
+    background: rgba(15, 23, 42, 0.88) !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 18px !important;
+    border-radius: 20px !important;
   }
 
   .story-title {
