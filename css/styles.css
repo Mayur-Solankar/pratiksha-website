@@ -4380,59 +4380,128 @@ input:not([type="radio"]):not([type="checkbox"]), select, textarea {
    ========================================================================== */
 @media (max-width: 900px) {
   .apple-tooth-section {
-    padding: 70px 0 80px 0;
+    padding: 44px 0 60px 0 !important;
+    background: radial-gradient(circle at 50% 10%, #08212D 0%, #04131B 55%, #02090F 100%) !important;
+    color: #FFFFFF !important;
+  }
+
+  .apple-journey-container {
+    padding: 0 16px !important;
+  }
+
+  .apple-journey-header {
+    margin-bottom: 24px !important;
+    text-align: center !important;
+  }
+
+  .apple-journey-title {
+    font-size: 1.6rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .apple-journey-subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .apple-timeline-wrapper {
+    margin-top: 10px !important;
+    padding: 0 !important;
   }
 
   .timeline-center-spine {
-    display: none;
+    display: none !important;
   }
 
+  /* On mobile: tooth acts as a sticky showcase stage right under the navbar */
   .apple-tooth-traveler {
-    width: 200px;
-    height: 220px;
+    position: sticky !important;
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    height: 175px !important;
+    margin: 0 auto 20px auto !important;
+    z-index: 20 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(4, 19, 27, 0.9) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(45, 212, 191, 0.3) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6) !important;
+    pointer-events: none !important;
   }
 
   .apple-tooth-svg {
-    width: 170px;
+    width: 125px !important;
+    max-height: 120px !important;
   }
 
   .tooth-status-pill {
-    margin-top: 6px;
-    padding: 4px 14px;
+    margin-top: 4px !important;
+    padding: 3px 12px !important;
+    background: rgba(15, 23, 42, 0.95) !important;
+  }
+
+  .tooth-status-pill .pill-dot {
+    width: 7px !important;
+    height: 7px !important;
   }
 
   .tooth-status-pill .pill-text {
-    font-size: 0.76rem;
+    font-size: 0.72rem !important;
   }
 
   .timeline-row {
-    margin-bottom: 45px;
-    flex-direction: column;
+    margin-bottom: 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
   }
 
   .timeline-node-dot {
-    position: static;
-    transform: none;
-    margin-bottom: 12px;
-    align-self: flex-start;
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 8px !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.75rem !important;
+    align-self: flex-start !important;
   }
 
   .timeline-row.row-left .timeline-card,
   .timeline-row.row-right .timeline-card {
-    width: 100%;
-    margin: 0;
-    padding: 20px 22px;
-    opacity: 1;
-    transform: none;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 20px 20px !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 18px !important;
   }
 
   .story-title {
-    font-size: 1.15rem;
+    font-size: 1.15rem !important;
+    color: #FFFFFF !important;
+  }
+
+  .story-marathi {
+    font-size: 0.88rem !important;
+    color: #2DD4BF !important;
   }
 
   .story-desc {
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.86rem !important;
+    line-height: 1.5 !important;
+    color: #CBD5E1 !important;
   }
 
   .story-cta-box .btn {

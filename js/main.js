@@ -1066,27 +1066,46 @@ function initToothScrollJourney() {
       // Clamp cleanly so tooth stays within timeline bounds
       const clampedY = Math.max(minY, Math.min(maxY, targetY));
 
-      // Move the tooth down smoothly along the spine!
-      traveler.style.transform = `translate3d(-50%, ${clampedY.toFixed(1)}px, 0)`;
+      const isMobile = window.innerWidth <= 900;
+      let progress = 0;
+      let activeIndex = 0;
 
-      // Normalized progress between Row 1 and Row 4 [0.0, 1.0]
-      const totalDistance = maxY - minY;
-      const progress = totalDistance > 0 ? (clampedY - minY) / totalDistance : 0;
+      if (!isMobile) {
+        // Desktop: Physical vertical travel along the center spine
+        traveler.style.transform = `translate3d(-50%, ${clampedY.toFixed(1)}px, 0)`;
 
-      // Update spine neon fill line
-      if (spineLineFill) {
-        spineLineFill.style.height = `${(progress * 100).toFixed(1)}%`;
+        // Normalized progress between Row 1 and Row 4 [0.0, 1.0]
+        const totalDistance = maxY - minY;
+        progress = totalDistance > 0 ? (clampedY - minY) / totalDistance : 0;
+
+        // Check which row is active based on tooth's vertical position
+        const toothCenterY = clampedY + toothHeight / 2;
+        rows.forEach((row, idx) => {
+          const rowCenter = row.offsetTop + row.offsetHeight / 2;
+          if (toothCenterY >= rowCenter - 120) {
+            activeIndex = idx;
+          }
+        });
+      } else {
+        // Mobile: Clean sticky showcase stage under navbar
+        traveler.style.transform = '';
+
+        // Progress calculated from active card passing viewport center
+        rows.forEach((row, idx) => {
+          const rowRect = row.getBoundingClientRect();
+          if (rowRect.top <= windowHeight * 0.58) {
+            activeIndex = idx;
+          }
+        });
+
+        const totalSteps = rows.length - 1;
+        progress = totalSteps > 0 ? activeIndex / totalSteps : 0;
       }
 
-      // Check which row is active based on tooth's vertical position
-      const toothCenterY = clampedY + toothHeight / 2;
-      let activeIndex = 0;
-      rows.forEach((row, idx) => {
-        const rowCenter = row.offsetTop + row.offsetHeight / 2;
-        if (toothCenterY >= rowCenter - 120) {
-          activeIndex = idx;
-        }
-      });
+      // Update spine neon fill line
+      if (spineLineFill && !isMobile) {
+        spineLineFill.style.height = `${(progress * 100).toFixed(1)}%`;
+      }
 
       // Update active state on rows
       rows.forEach((row, idx) => {
@@ -1106,9 +1125,11 @@ function initToothScrollJourney() {
 
       // Dynamic 3D tooth tilt
       if (tooth3D) {
-        const rotY = (progress - 0.5) * 32;
+        const rotY = (progress - 0.5) * (isMobile ? 24 : 32);
         const rotX = Math.sin(progress * Math.PI) * -8;
-        const scale = 0.95 + Math.sin(progress * Math.PI) * 0.12;
+        const scale = isMobile 
+          ? (0.92 + Math.sin(progress * Math.PI) * 0.08) 
+          : (0.95 + Math.sin(progress * Math.PI) * 0.12);
         tooth3D.style.transform = `perspective(1000px) rotateY(${rotY.toFixed(1)}deg) rotateX(${rotX.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
       }
 
